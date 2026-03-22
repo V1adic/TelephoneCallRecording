@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TelephoneCallRecording.Models.Authorization;
 
-namespace TelephoneCallRecording
+namespace TelephoneCallRecording.Services.DataBase.Authorization
 {
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
@@ -10,7 +10,7 @@ namespace TelephoneCallRecording
         protected override void OnModelCreating(ModelBuilder builder)
         {
             /*
-             Table: users
+             Table: Users
                 id SERIAL PRIMARY KEY,
                 email CITEXT NOT NULL UNIQUE,
                 username CITEXT NOT NULL UNIQUE,

@@ -1,12 +1,13 @@
 ﻿using System.Security.Cryptography;
 using TelephoneCallRecording.Models.Authorization;
+using TelephoneCallRecording.Services.Cryptography.Authorization;
+using TelephoneCallRecording.Services.Lockout;
 
 namespace TelephoneCallRecording.Services.Authorization.Login
 {
     public class PasswordValidator
     {
-        const int MaxAttempts = 5;
-        const int LockoutDurationMinutes = 15;
+
         private static readonly string DummySalt = Convert.ToBase64String(RandomNumberGenerator.GetBytes(16));
         private static readonly string DummyHash = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
 
@@ -24,23 +25,13 @@ namespace TelephoneCallRecording.Services.Authorization.Login
 
             if (!passwordCorrect)
             {
-                PasswordIncorrect(user);
+                LoginLockoutService.PasswordIncorrect(user);
                 return false;
             }
 
-            AccountLockoutService.ErrorReset(user);
+            LoginLockoutService.ErrorReset(user);
 
             return true;
-        }
-
-        // Метод для обработки неправильного пароля
-        static private void PasswordIncorrect(User user)
-        {
-            user.FailedLoginAttempts++;
-            if (user.FailedLoginAttempts >= MaxAttempts)
-            {
-                user.LockoutEnd = DateTime.UtcNow.AddMinutes(LockoutDurationMinutes);
-            }
         }
     }
 }

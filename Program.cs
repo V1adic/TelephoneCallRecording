@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
-using Npgsql;
 using Scalar.AspNetCore;
 using System.Net;
 using System.Threading.RateLimiting;
-using TelephoneCallRecording;
+using TelephoneCallRecording.Services.DataBase.Authorization;
 
 
 var builder = WebApplication.CreateBuilder(args);

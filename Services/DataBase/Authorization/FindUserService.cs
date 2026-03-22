@@ -1,7 +1,7 @@
 ﻿using TelephoneCallRecording.Models.Authorization;
 using Microsoft.EntityFrameworkCore;
 
-namespace TelephoneCallRecording.Services.Authorization
+namespace TelephoneCallRecording.Services.DataBase.Authorization
 {
     public class FindUserService
     {
@@ -11,6 +11,11 @@ namespace TelephoneCallRecording.Services.Authorization
                 .FirstOrDefaultAsync(x => x.Username == username);
 
             return user;
+        }
+
+        static public async Task<bool> ContainsUser(AppDbContext _db, string username)
+        {
+            return await _db.Users.AnyAsync(x => x.Username == username);
         }
     }
 }

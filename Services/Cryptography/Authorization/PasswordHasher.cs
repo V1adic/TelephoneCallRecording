@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace TelephoneCallRecording.Services.Authorization
+namespace TelephoneCallRecording.Services.Cryptography.Authorization
 {
     public class PasswordHasher
     {

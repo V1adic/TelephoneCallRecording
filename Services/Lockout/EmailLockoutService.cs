@@ -1,28 +1,36 @@
 ﻿using TelephoneCallRecording.Models.Authorization;
 
-namespace TelephoneCallRecording.Services.Authorization.Login
+namespace TelephoneCallRecording.Services.Lockout
 {
-    public class AccountLockoutService
+    public class EmailLockoutService
     {
         static public bool AttemptLockout(User user)
         {
             bool accountLocked = false;
-
             // Проверяем не заблокирован ли пользователь и разблокируем его, если срок блокировки истек
             if (user.LockoutEnd.HasValue && user.LockoutEnd > DateTime.UtcNow)
             {
                 accountLocked = true;
             }
-            else if (user.LockoutEnd.HasValue)
+            else if (user.EmailConfirmationCodeHash != null)
             {
                 ErrorReset(user);
             }
-
             return accountLocked;
         }
-        static public void ErrorReset(User user)
+
+        static public void ErrorAttempt(User user)
         {
-            user.FailedLoginAttempts = 0;
+            user.FailedEmailConfirmAttempts++;
+            if (user.FailedEmailConfirmAttempts >= 5)
+            {
+                user.LockoutEnd = DateTime.UtcNow.AddMinutes(15);
+            }
+        }
+
+        static private void ErrorReset(User user)
+        {
+            user.FailedEmailConfirmAttempts = 0;
             user.LockoutEnd = null;
         }
     }

@@ -3,17 +3,27 @@ using TelephoneCallRecording.Models.Authorization;
 
 namespace TelephoneCallRecording
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
         public DbSet<User> Users => Set<User>();
 
-        public AppDbContext(DbContextOptions<AppDbContext> options)
-            : base(options)
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            /*
+             Table: users
+                id SERIAL PRIMARY KEY,
+                email CITEXT NOT NULL UNIQUE,
+                username CITEXT NOT NULL UNIQUE,
+                password_hash VARCHAR(44) NOT NULL,
+                password_salt VARCHAR(24) NOT NULL,
+                is_email_confirmed BOOLEAN NOT NULL DEFAULT FALSE,
+                email_confirmation_code_hash VARCHAR(44),
+                email_confirmation_expires TIMESTAMP,
+                failed_login_attempts INT NOT NULL DEFAULT 0,
+                failed_email_confirm_attempts INT NOT NULL DEFAULT 0,
+                lockout_end TIMESTAMP
+             */
+
             base.OnModelCreating(builder);
 
             builder.Entity<User>(entity =>

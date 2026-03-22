@@ -11,89 +11,31 @@ using System.Text;
 using System.Text.RegularExpressions;
 using TelephoneCallRecording.Models.Authorization;
 using TelephoneCallRecording.Services.Authorization;
+using TelephoneCallRecording.Services.Authorization.Login;
 
 namespace TelephoneCallRecording.Controllers.Authorization
 {
     [ApiController]
     [Route("auth")]
-    public class AuthController : Controller
+    public class AuthController(AppDbContext db) : Controller
     {
-        private readonly AppDbContext _db;
-        private static readonly string DummySalt = Convert.ToBase64String(RandomNumberGenerator.GetBytes(16));
-        private static readonly string DummyHash = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+        private readonly AppDbContext _db = db;
         private const string PasswordRegex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()_+\-=\[\]{}|;:,.<>/?])[A-Za-z\d@$!%*?&^#()_+\-=\[\]{}|;:,.<>/?]{12,}$";
 
         public record LoginRequest([Required, MaxLength(15), MinLength(5)] string Username, [Required, MinLength(12), MaxLength(100)] string Password);
         public record RegisterRequest([Required, MaxLength(15), MinLength(5)] string Username, [Required, MinLength(12), MaxLength(100)] string Password, [Required, MaxLength(100)] string Email);
         public record ConfirmEmailRequest([Required, MaxLength(100)] string Email, [Required, MaxLength(100)] string Code);
 
-        public AuthController(AppDbContext db)
-        {
-            _db = db;
-        }
-
-
         [HttpPost("login")]
         [EnableRateLimiting("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            await using var tx = await _db.Database.BeginTransactionAsync();
+            var principal = await LoginService.AttemptLogin(_db, request.Username, request.Password);
 
-            var user = await _db.Users.FirstOrDefaultAsync(x => x.Username == request.Username.Trim());
-
-            bool accountLocked = false;
-
-            if (user != null)
-            {
-                if (user.LockoutEnd.HasValue && user.LockoutEnd > DateTime.UtcNow)
-                {
-                    accountLocked = true;
-                }
-                else if (user.LockoutEnd.HasValue)
-                {
-                    user.FailedLoginAttempts = 0;
-                    user.LockoutEnd = null;
-                }
-            }
-
-            string hashToUse = (user == null || accountLocked) ? DummyHash : user.PasswordHash;
-            string saltToUse = (user == null || accountLocked) ? DummySalt : user.PasswordSalt;
-
-            bool passwordCorrect = PasswordHasher.Verify(request.Password, hashToUse, saltToUse);
-
-            if (user == null || accountLocked)
+            if (principal == null) // Неудачная попытка входа, например, из-за неверного пароля или заблокированного аккаунта
                 return Unauthorized();
 
-            if (!passwordCorrect)
-            {
-                user.FailedLoginAttempts++;
-                if (user.FailedLoginAttempts >= 5)
-                {
-                    user.LockoutEnd = DateTime.UtcNow.AddMinutes(15);
-                }
-                await _db.SaveChangesAsync();
-                await tx.CommitAsync();
-
-                return Unauthorized();
-            }
-
-            // Сброс ошибок
-            user.FailedLoginAttempts = 0;
-            user.LockoutEnd = null;
-
-            await _db.SaveChangesAsync();
-            await tx.CommitAsync();
-
-            var claims = new List<Claim>
-            {
-                new (ClaimTypes.Name, user.Username),
-                new (ClaimTypes.NameIdentifier, user.Id.ToString())
-            };
-
-            var identity = new ClaimsIdentity(claims, "cookie");
-
-            await HttpContext.SignInAsync("cookie",
-                new ClaimsPrincipal(identity));
+            await HttpContext.SignInAsync("cookie", principal);
 
             return Ok();
         }
@@ -114,16 +56,14 @@ namespace TelephoneCallRecording.Controllers.Authorization
                 trimmedUsername.Contains(' '))
                 return BadRequest("Username error");
 
-            if(!EmailService.IsValidEmail(request.Email.Trim()))
+            if (!EmailService.IsValidEmail(request.Email.Trim()))
                 return BadRequest("Email error");
 
             var (hash, salt) = PasswordHasher.HashPassword(request.Password);
 
             var code = RandomNumberGenerator.GetInt32(100000, 999999).ToString();
-
-            using var sha = SHA256.Create();
             var bytes = Encoding.UTF8.GetBytes(code);
-            string codeHash = Convert.ToBase64String(sha.ComputeHash(bytes));
+            string codeHash = Convert.ToBase64String(SHA256.HashData(bytes));
 
             if (await _db.Users.AnyAsync(x => x.Username == trimmedUsername))
                 return BadRequest();
@@ -144,7 +84,7 @@ namespace TelephoneCallRecording.Controllers.Authorization
             {
                 await _db.SaveChangesAsync();
             }
-            catch(DbUpdateException)
+            catch (DbUpdateException)
             {
                 return BadRequest();
             }
@@ -158,11 +98,8 @@ namespace TelephoneCallRecording.Controllers.Authorization
         [EnableRateLimiting("login")]
         public async Task<IActionResult> ConfirmEmail([FromBody] ConfirmEmailRequest request)
         {
-            await using var tx = await _db.Database.BeginTransactionAsync();
-
-            using var sha = SHA256.Create();
             var bytes = Encoding.UTF8.GetBytes(request.Code);
-            string incomingCodeHash = Convert.ToBase64String(sha.ComputeHash(bytes));
+            string incomingCodeHash = Convert.ToBase64String(SHA256.HashData(bytes));
 
             var user = await _db.Users
                 .FirstOrDefaultAsync(x => x.Email == request.Email.Trim());
@@ -183,7 +120,6 @@ namespace TelephoneCallRecording.Controllers.Authorization
                     user.LockoutEnd = DateTime.UtcNow.AddMinutes(15);
                 }
                 await _db.SaveChangesAsync();
-                await tx.CommitAsync();
 
                 return BadRequest("Already confirmed");
             }
@@ -195,7 +131,6 @@ namespace TelephoneCallRecording.Controllers.Authorization
                     user.LockoutEnd = DateTime.UtcNow.AddMinutes(15);
                 }
                 await _db.SaveChangesAsync();
-                await tx.CommitAsync();
 
                 return BadRequest("Invalid code");
             }
@@ -207,11 +142,11 @@ namespace TelephoneCallRecording.Controllers.Authorization
                     user.LockoutEnd = DateTime.UtcNow.AddMinutes(15);
                 }
                 await _db.SaveChangesAsync();
-                await tx.CommitAsync();
 
                 return BadRequest("Code expired");
             }
 
+            // Сброс счетчика неудачных попыток подтверждения email при успешном подтверждении
             user.IsEmailConfirmed = true;
             user.EmailConfirmationCodeHash = null;
             user.EmailConfirmationExpires = null;
@@ -219,7 +154,6 @@ namespace TelephoneCallRecording.Controllers.Authorization
             user.LockoutEnd = null;
 
             await _db.SaveChangesAsync();
-            await tx.CommitAsync();
 
             // TODO: Выдать токен для подтвержденного пользователя
             return Ok();
@@ -236,6 +170,7 @@ namespace TelephoneCallRecording.Controllers.Authorization
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync("cookie");
+            // TODO: Реализовать отзыв токенов при выходе, если будет использоваться JWT
             return Ok();
         }
     }

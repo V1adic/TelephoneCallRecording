@@ -1,9 +1,9 @@
 ﻿using System.Security.Claims;
 using System.Security.Cryptography;
-using TelephoneCallRecording.Models.Authorization;
 using TelephoneCallRecording.Services.Authorization.Email;
+using TelephoneCallRecording.Services.Authorization.Lockout;
 using TelephoneCallRecording.Services.DataBase.Authorization;
-using TelephoneCallRecording.Services.Lockout;
+
 
 namespace TelephoneCallRecording.Services.Authorization.Login
 {
@@ -19,10 +19,10 @@ namespace TelephoneCallRecording.Services.Authorization.Login
             bool accountLocked = LoginLockoutService.AttemptLockout(user);
             bool passwordValid = PasswordValidator.AttemptPassword(user, password, accountLocked);
 
-            (string codeHash, string code) = CodeFactory.GetCodeHash();
-            user.IsEmailConfirmed = false; // Заставляем пройти проверку снова, так как при каждом входе нужно подтверждать email.
-            user.EmailConfirmationCodeHash = codeHash;
-            await EmailService.SendConfirmationCodeAsync(user.Email, code);
+            if(!UserVerification.Check(user))
+            {
+                await UserVerification.Verification(user);
+            }
 
             await _db.SaveChangesAsync();
 

@@ -1,0 +1,190 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\telephonecallrecording.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:telephonecallrecording.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\cryptography\\authorization\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\cryptography\\authorization\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\models\\authorization\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:models\\authorization\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\login\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\login\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\lockout\\userverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\lockout\\userverification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\lockout\\emaillockoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\lockout\\emaillockoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\controllers\\authorization\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:controllers\\authorization\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Cryptography\\Authorization\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "Services\\Cryptography\\Authorization\\PasswordHasher.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Cryptography\\Authorization\\PasswordHasher.cs",
+              "RelativeToolTip": "Services\\Cryptography\\Authorization\\PasswordHasher.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:21:25.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmailLockoutService.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\EmailLockoutService.cs",
+              "RelativeDocumentMoniker": "Services\\Authorization\\Lockout\\EmailLockoutService.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\EmailLockoutService.cs",
+              "RelativeToolTip": "Services\\Authorization\\Lockout\\EmailLockoutService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:15:24.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserVerification.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\UserVerification.cs",
+              "RelativeDocumentMoniker": "Services\\Authorization\\Lockout\\UserVerification.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\UserVerification.cs",
+              "RelativeToolTip": "Services\\Authorization\\Lockout\\UserVerification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T09:45:35.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginService.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Login\\LoginService.cs",
+              "RelativeDocumentMoniker": "Services\\Authorization\\Login\\LoginService.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Login\\LoginService.cs",
+              "RelativeToolTip": "Services\\Authorization\\Login\\LoginService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T09:42:35.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\EmailService.cs",
+              "RelativeDocumentMoniker": "Services\\Authorization\\Email\\EmailService.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\EmailService.cs",
+              "RelativeToolTip": "Services\\Authorization\\Email\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T11:15:19.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-23T10:53:39.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T10:39:49.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TelephoneCallRecording.http",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\TelephoneCallRecording.http",
+              "RelativeDocumentMoniker": "TelephoneCallRecording.http",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\TelephoneCallRecording.http",
+              "RelativeToolTip": "TelephoneCallRecording.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-03-23T10:38:45.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Models\\Authorization\\User.cs",
+              "RelativeDocumentMoniker": "Models\\Authorization\\User.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Models\\Authorization\\User.cs",
+              "RelativeToolTip": "Models\\Authorization\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T10:33:39.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Controllers\\Authorization\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Authorization\\AuthController.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Controllers\\Authorization\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\Authorization\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T09:41:33.074Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

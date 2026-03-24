@@ -9,15 +9,15 @@ using TelephoneCallRecording.Services.DataBase.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.Configure<ForwardedHeadersOptions>(options =>
-{
-    options.ForwardedHeaders =
-        ForwardedHeaders.XForwardedFor |
-        ForwardedHeaders.XForwardedProto;
+//builder.Services.Configure<ForwardedHeadersOptions>(options =>
+//{
+//    options.ForwardedHeaders =
+//        ForwardedHeaders.XForwardedFor |
+//        ForwardedHeaders.XForwardedProto;
 
-    options.KnownProxies.Add(IPAddress.Parse("127.0.0.1")); // Ставить IP-адреса доверенных прокси, если они есть. В данном случае предполагается, что прокси работает на localhost
-    options.ForwardLimit = 1; // Ограничиваем количество прокси, чтобы предотвратить подделку заголовков.
-});
+//    options.KnownProxies.Add(IPAddress.Parse("127.0.0.1")); // Ставить IP-адреса доверенных прокси, если они есть. В данном случае предполагается, что прокси работает на localhost
+//    options.ForwardLimit = 1; // Ограничиваем количество прокси, чтобы предотвратить подделку заголовков.
+//});
 
 builder.Services.AddAuthentication("cookie")
     .AddCookie("cookie", options =>
@@ -79,7 +79,7 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseForwardedHeaders(); // Оставь самым первым, чтобы корректно обрабатывать IP и протокол от прокси
+//app.UseForwardedHeaders(); // Оставь самым первым, чтобы корректно обрабатывать IP и протокол от прокси
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

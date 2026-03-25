@@ -23,11 +23,11 @@ namespace TelephoneCallRecording.Services.DataBase.Authorization
                 failed_email_confirm_attempts INT NOT NULL DEFAULT 0,
                 lockout_end TIMESTAMP
              */
+
             base.OnModelCreating(builder);
 
             builder.Entity<User>(entity =>
             {
-
                 entity.ToTable("users");
 
                 entity.HasKey(x => x.Id);

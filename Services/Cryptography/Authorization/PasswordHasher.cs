@@ -4,7 +4,13 @@ using System.Text;
 
 namespace TelephoneCallRecording.Services.Cryptography.Authorization
 {
-    public class PasswordHasher
+    public interface IPasswordHasher
+    {
+        (string hash, string salt) HashPassword(string password);
+        bool Verify(string password, string storedHash, string storedSalt);
+    }
+
+    public class PasswordHasher : IPasswordHasher
     {
         private const int SaltSize = 16;           // байт
         private const int HashSize = 32;           // байт (256 бит)
@@ -12,7 +18,7 @@ namespace TelephoneCallRecording.Services.Cryptography.Authorization
         private const int Iterations = 3;
         private const int DegreeOfParallelism = 1;
 
-        public static (string hash, string salt) HashPassword(string password)
+        public (string hash, string salt) HashPassword(string password)
         {
             byte[] saltBytes = RandomNumberGenerator.GetBytes(SaltSize);
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
@@ -33,7 +39,7 @@ namespace TelephoneCallRecording.Services.Cryptography.Authorization
             );
         }
 
-        public static bool Verify(string password, string storedHash, string storedSalt)
+        public bool Verify(string password, string storedHash, string storedSalt)
         {
             byte[] saltBytes = Convert.FromBase64String(storedSalt);
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);

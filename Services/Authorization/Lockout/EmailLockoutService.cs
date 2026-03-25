@@ -1,9 +1,20 @@
-﻿using TelephoneCallRecording.Models.Authorization;
+﻿using Microsoft.Extensions.Options;
+using TelephoneCallRecording.Models.Authorization;
+using TelephoneCallRecording.Services.Authorization.Lockout.Options;
 
 namespace TelephoneCallRecording.Services.Authorization.Lockout
 {
-    public class EmailLockoutService
+    public interface IEmailLockoutService
     {
+        void ErrorAttempt(User user);
+    }
+    public class EmailLockoutService : IEmailLockoutService
+    {
+        private readonly IOptions<LockoutOptions> _options;
+        public EmailLockoutService(IOptions<LockoutOptions> options)
+        {
+            _options = options;
+        }
         static public bool AttemptLockout(User user)
         {
             bool accountLocked = false;
@@ -19,12 +30,12 @@ namespace TelephoneCallRecording.Services.Authorization.Lockout
             return accountLocked;
         }
 
-        static public void ErrorAttempt(User user)
+        public void ErrorAttempt(User user)
         {
             user.FailedEmailConfirmAttempts++;
-            if (user.FailedEmailConfirmAttempts >= 5)
+            if (user.FailedEmailConfirmAttempts >= _options.Value.MaxFailedConfirmAttempts)
             {
-                user.LockoutEnd = DateTime.UtcNow.AddMinutes(15);
+                user.LockoutEnd = DateTime.UtcNow.AddMinutes(_options.Value.LockoutDurationMinutes);
             }
         }
 

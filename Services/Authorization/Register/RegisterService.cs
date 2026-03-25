@@ -1,37 +1,77 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using TelephoneCallRecording.Models.Authorization;
 using TelephoneCallRecording.Services.Authorization.Email;
-using TelephoneCallRecording.Services.Authorization.Login;
+using TelephoneCallRecording.Services.Authorization.Lockout.Options;
+using TelephoneCallRecording.Services.Authorization.Register;
 using TelephoneCallRecording.Services.Cryptography.Authorization;
 using TelephoneCallRecording.Services.DataBase.Authorization;
 
 namespace TelephoneCallRecording.Services.Authorization.Register
 {
-    public class RegisterService
+    public interface IRegisterService
     {
-        static public async Task<bool> AttemptRegister(AppDbContext _db, string username, string password, string email)
+        Task<bool> AttemptRegister(string username, string password, string email);
+    }
+
+    public class RegisterService : IRegisterService
+    {
+        private readonly IUserRepository _userRepository;
+        private readonly IPasswordHasher _passwordHasher;
+        private readonly IConfirmationCodeGenerator _codeGenerator;
+        private readonly IEmailService _emailService;
+        private readonly IOptions<Lockout.Options.LockoutOptions> _emailOptions;
+
+        public RegisterService(IUserRepository userRepository, IPasswordHasher passwordHasher, IConfirmationCodeGenerator codeGenerator, IEmailService emailService, IOptions<Lockout.Options.LockoutOptions> emailOptions)
         {
-            var requestValidation = RegisterRequestVerifire.IsValid(username, password, email);
+            _userRepository = userRepository;
+            _passwordHasher = passwordHasher;
+            _codeGenerator = codeGenerator;
+            _emailService = emailService;
+            _emailOptions = emailOptions;
+        }
 
-            if (!string.IsNullOrEmpty(requestValidation)) // Через фронтенд передать о конкретной ошибке.
-            {
+        public async Task<bool> AttemptRegister(string username, string password, string email)
+        {
+            var requestValidation = RegisterRequestVerifier.IsValid(username, password, email);
+            if (!string.IsNullOrEmpty(requestValidation))
                 return false;
-            }
 
-            var (hash, salt) = PasswordHasher.HashPassword(password);
-            (string codeHash, string code) = CodeFactory.GetCodeHash();
+            var (hash, salt) = _passwordHasher.HashPassword(password);
+            (string codeHash, string code) = _codeGenerator.Generate();
 
-            if (await FindUserService.ContainsUser(_db, username))
-                return false;
+            await using var transaction = await _userRepository.BeginTransactionAsync();
 
-            if (await AddUserService.AddUser(_db, username, hash, salt, email, codeHash))
+            try
             {
-                await EmailService.SendConfirmationCodeAsync(email, code);
+                if (await _userRepository.ExistsByUsernameAsync(username))
+                {
+                    await _userRepository.RollbackTransactionAsync(transaction);
+                    return false;
+                }
+
+                var user = new User
+                {
+                    Email = email,
+                    Username = username,
+                    PasswordHash = hash,
+                    PasswordSalt = salt,
+                    IsEmailConfirmed = false,
+                    EmailConfirmationCodeHash = codeHash,
+                    EmailConfirmationExpires = DateTime.UtcNow.AddMinutes(_emailOptions.Value.CodeExpirationMinutes)
+                };
+
+                await _userRepository.AddAsync(user);
+                await _userRepository.SaveChangesAsync();
+
+                await _userRepository.CommitTransactionAsync(transaction);
+
+                await _emailService.SendConfirmationCodeAsync(email, code);
                 return true;
             }
-            else
+            catch (Exception)
             {
+                await _userRepository.RollbackTransactionAsync(transaction);
                 return false;
             }
         }

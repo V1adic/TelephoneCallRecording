@@ -4,6 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using System.Net;
 using System.Threading.RateLimiting;
+using TelephoneCallRecording.Services.Authorization.Email;
+using TelephoneCallRecording.Services.Authorization.Lockout;
+using TelephoneCallRecording.Services.Authorization.Lockout.Options;
+using TelephoneCallRecording.Services.Authorization.Login;
+using TelephoneCallRecording.Services.Authorization.Register;
+using TelephoneCallRecording.Services.Cryptography.Authorization;
 using TelephoneCallRecording.Services.DataBase.Authorization;
 
 
@@ -63,6 +69,18 @@ builder.Services.AddRateLimiter(options =>
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("Default")));
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
+builder.Services.AddSingleton<IConfirmationCodeGenerator, ConfirmationCodeGenerator>();
+builder.Services.AddScoped<IPasswordValidator, PasswordValidator>();
+builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IRegisterService, RegisterService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IUserVerificationService, UserVerificationService>();
+builder.Services.AddScoped<IEmailLockoutService, EmailLockoutService>();
+builder.Services.AddScoped<ILoginLockoutService, LoginLockoutService>();
+builder.Services.AddScoped<IEmailConfirmationValidator, EmailConfirmationValidator>();
 
 builder.Services.AddAuthorization();
 

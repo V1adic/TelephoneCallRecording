@@ -1,37 +1,62 @@
 ﻿using System.Security.Claims;
-using System.Security.Cryptography;
-using TelephoneCallRecording.Services.Authorization.Email;
 using TelephoneCallRecording.Services.Authorization.Lockout;
 using TelephoneCallRecording.Services.DataBase.Authorization;
 
-
 namespace TelephoneCallRecording.Services.Authorization.Login
 {
-    public class LoginService
+    public interface ILoginService
     {
-        static public async Task<ClaimsPrincipal?> AttemptLogin(AppDbContext _db, string username, string password)
+        Task<ClaimsPrincipal?> AttemptLogin(string username, string password);
+    }
+
+    public class LoginService : ILoginService
+    {
+        private readonly IUserRepository _userRepository;
+        private readonly IPasswordValidator _passwordValidator;
+        private readonly IUserVerificationService _userVerificationService;
+
+        public LoginService(IUserRepository userRepository, IPasswordValidator passwordValidator, IUserVerificationService userVerificationService)
         {
-            var user = await FindUserService.SearchByUsername(_db, username);
+            _userRepository = userRepository;
+            _passwordValidator = passwordValidator;
+            _userVerificationService = userVerificationService;
+        }
 
-            if (user == null)
-                return null;
+        public async Task<ClaimsPrincipal?> AttemptLogin(string username, string password)
+        {
+            await using var transaction = await _userRepository.BeginTransactionAsync();
 
-            bool accountLocked = LoginLockoutService.AttemptLockout(user);
-            bool passwordValid = PasswordValidator.AttemptPassword(user, password, accountLocked);
-
-            if(!UserVerification.Check(user))
+            try
             {
-                await UserVerification.Verification(user);
+                var user = await _userRepository.FindByUsernameAsync(username);
+
+                if (user == null)
+                {
+                    await _userRepository.RollbackTransactionAsync(transaction);
+                    return null;
+                }
+                if (!user.IsEmailConfirmed)
+                {
+                    await _userRepository.RollbackTransactionAsync(transaction);
+                    return null;
+                }
+
+                bool accountLocked = LoginLockoutService.AttemptLockout(user);
+                bool passwordValid = _passwordValidator.AttemptPassword(user, password, accountLocked);
+
+                if (_userVerificationService.RequiresVerification(user))
+                {
+                    await _userVerificationService.TriggerEmailVerificationAsync(user);
+                }
+
+                await _userRepository.SaveChangesAsync();
+                await _userRepository.CommitTransactionAsync(transaction);
+
+                return passwordValid ? ClaimsPrincipalFactory.Get(user) : null;
             }
-
-            await _db.SaveChangesAsync();
-
-            if (passwordValid)
+            catch (Exception)
             {
-                return ClaimsPrincipalFactory.Get(user);
-            }
-            else
-            {
+                await _userRepository.RollbackTransactionAsync(transaction);
                 return null;
             }
         }

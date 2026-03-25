@@ -1,11 +1,21 @@
-﻿using TelephoneCallRecording.Models.Authorization;
+﻿using Microsoft.Extensions.Options;
+using TelephoneCallRecording.Models.Authorization;
+using TelephoneCallRecording.Services.Authorization.Email;
+using TelephoneCallRecording.Services.Authorization.Lockout.Options;
 
 namespace TelephoneCallRecording.Services.Authorization.Lockout
 {
-    public class LoginLockoutService
+    public interface ILoginLockoutService
     {
-        const int MaxAttempts = 5;
-        const int LockoutDurationMinutes = 15;
+        void PasswordIncorrect(User user);
+    }
+    public class LoginLockoutService: ILoginLockoutService
+    {
+        private readonly IOptions<LockoutOptions> _options;
+        public LoginLockoutService(IOptions<LockoutOptions> options)
+        {
+            _options = options;
+        }
         static public bool AttemptLockout(User user)
         {
             bool accountLocked = false;
@@ -31,12 +41,12 @@ namespace TelephoneCallRecording.Services.Authorization.Lockout
         }
 
         // Метод для обработки неправильного пароля
-        static public void PasswordIncorrect(User user)
+        public void PasswordIncorrect(User user)
         {
             user.FailedLoginAttempts++;
-            if (user.FailedLoginAttempts >= MaxAttempts)
+            if (user.FailedLoginAttempts >= _options.Value.MaxFailedLoginAttempts)
             {
-                user.LockoutEnd = DateTime.UtcNow.AddMinutes(LockoutDurationMinutes);
+                user.LockoutEnd = DateTime.UtcNow.AddMinutes(_options.Value.LockoutDurationMinutes);
             }
         }
     }

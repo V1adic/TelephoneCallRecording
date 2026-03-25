@@ -1,15 +1,10 @@
 @TelephoneCallRecording_HostAddress = http://localhost:5070
-<<<<<<< HEAD
-@username = testuser
+
+@username = testuser3
 @password = StrongP@ssw0rd123
-@email = test@example.com
-@code = 125020
-=======
-@username = testuser1
-@password = StrongP@ssw0rd123
-@email = test1@example.com
-@code = 783584
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
+@email = test3@example.com
+@code = 472569
+
 
 ### Auth test
 

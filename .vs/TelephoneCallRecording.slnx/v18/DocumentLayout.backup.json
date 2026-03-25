@@ -3,85 +3,58 @@
   "WorkspaceRootPath": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\",
   "Documents": [
     {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\migrations\\20260324190526_initauthschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:migrations\\20260324190526_initauthschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\database\\authorization\\finduserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\database\\authorization\\finduserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\database\\migrations\\initauthschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\database\\migrations\\initauthschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\database\\authorization\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\database\\authorization\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\database\\authorization\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\database\\authorization\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\cryptography\\authorization\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\cryptography\\authorization\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\register\\registerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\register\\registerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\services\\authorization\\login\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\login\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\services\\authorization\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\register\\registerrequestverifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\register\\registerrequestverifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\services\\authorization\\login\\accountlockoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\login\\accountlockoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\controllers\\authorization\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:controllers\\authorization\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\services\\authorization\\login\\claimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\login\\claimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\login\\claimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
     },
     {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\login\\passwordvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\login\\passwordvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\lockout\\loginlockoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\lockout\\loginlockoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\login\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\login\\loginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\lockout\\emaillockoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\lockout\\emaillockoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\email\\erroremailconfirmation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\email\\erroremailconfirmation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\lockout\\options\\lockoutoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\lockout\\options\\lockoutoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\email\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\email\\codefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\email\\codefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\services\\authorization\\finduserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\finduserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\services\\authorization\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\services\\authorization\\email\\confirmationcodegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:services\\authorization\\email\\confirmationcodegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\models\\authorization\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:models\\authorization\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\controllers\\authorization\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:controllers\\authorization\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -90,22 +63,14 @@
       "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:telephonecallrecording.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|c:\\users\\vnori\\desktop\\main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u043B\u0430\u0431\u044B\\telephonecallrecording\\migrations\\20260324190526_initauthschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:migrations\\20260324190526_initauthschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Lockout\\LoginLockoutService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Lockout\\EmailLockoutService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|d:\\new_desctop\\main\\\u0434\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0440\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\telephonecallrecording\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{822339EA-CCB9-EDC4-A9EF-CE18765A393D}|TelephoneCallRecording.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
     }
   ],
   "DocumentGroupContainers": [
@@ -115,50 +80,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< HEAD
-          "SelectedChildIndex": 2,
-=======
-          "SelectedChildIndex": 3,
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-<<<<<<< HEAD
-              "Title": "FindUserService.cs",
-              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\DataBase\\Authorization\\FindUserService.cs",
-              "RelativeDocumentMoniker": "Services\\DataBase\\Authorization\\FindUserService.cs",
-              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\DataBase\\Authorization\\FindUserService.cs",
-              "RelativeToolTip": "Services\\DataBase\\Authorization\\FindUserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T08:05:02.803Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAswFkAAAAAAAAAAAAAAA==",
+              "Title": "InitAuthSchema.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\DataBase\\Migrations\\InitAuthSchema.cs",
+              "RelativeDocumentMoniker": "Services\\DataBase\\Migrations\\InitAuthSchema.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\DataBase\\Migrations\\InitAuthSchema.cs",
+              "RelativeToolTip": "Services\\DataBase\\Migrations\\InitAuthSchema.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T08:49:04.763Z",
+              "WhenOpened": "2026-03-25T11:03:08.424Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20260324190526_InitAuthSchema.cs",
-              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Migrations\\20260324190526_InitAuthSchema.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260324190526_InitAuthSchema.cs",
-              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Migrations\\20260324190526_InitAuthSchema.cs",
-              "RelativeToolTip": "Migrations\\20260324190526_InitAuthSchema.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T08:04:03.823Z",
+              "WhenOpened": "2026-03-25T10:40:01.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\DataBase\\Authorization\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Services\\DataBase\\Authorization\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\DataBase\\Authorization\\UserRepository.cs",
+              "RelativeToolTip": "Services\\DataBase\\Authorization\\UserRepository.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAqwDAAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T11:01:58.25Z",
               "EditorCaption": ""
             },
             {
@@ -169,286 +129,185 @@
               "RelativeDocumentMoniker": "Services\\DataBase\\Authorization\\DbContext.cs",
               "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\DataBase\\Authorization\\DbContext.cs",
               "RelativeToolTip": "Services\\DataBase\\Authorization\\DbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T08:05:01.12Z",
-=======
-              "Title": "AccountLockoutService.cs",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\Login\\AccountLockoutService.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\Login\\AccountLockoutService.cs",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\Login\\AccountLockoutService.cs",
-              "RelativeToolTip": "Services\\Authorization\\Login\\AccountLockoutService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T05:23:03.403Z",
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
+              "WhenOpened": "2026-03-25T10:40:01.918Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-<<<<<<< HEAD
-              "Title": "LoginService.cs",
-              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Login\\LoginService.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\Login\\LoginService.cs",
-              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Login\\LoginService.cs",
-              "RelativeToolTip": "Services\\Authorization\\Login\\LoginService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Cryptography\\Authorization\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "Services\\Cryptography\\Authorization\\PasswordHasher.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Cryptography\\Authorization\\PasswordHasher.cs",
+              "RelativeToolTip": "Services\\Cryptography\\Authorization\\PasswordHasher.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAIwDIAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T15:35:09.867Z",
+              "WhenOpened": "2026-03-25T11:00:59.528Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-=======
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
-              "Title": "PasswordValidator.cs",
-              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Login\\PasswordValidator.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\Login\\PasswordValidator.cs",
-              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Login\\PasswordValidator.cs",
-              "RelativeToolTip": "Services\\Authorization\\Login\\PasswordValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAkwBwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T05:21:09.26Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 4,
               "Title": "RegisterService.cs",
               "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Register\\RegisterService.cs",
               "RelativeDocumentMoniker": "Services\\Authorization\\Register\\RegisterService.cs",
               "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Register\\RegisterService.cs",
               "RelativeToolTip": "Services\\Authorization\\Register\\RegisterService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAwwBAAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T16:00:29.931Z",
+              "WhenOpened": "2026-03-25T10:40:01.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RegisterRequestVerifier.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Register\\RegisterRequestVerifier.cs",
+              "RelativeDocumentMoniker": "Services\\Authorization\\Register\\RegisterRequestVerifier.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Register\\RegisterRequestVerifier.cs",
+              "RelativeToolTip": "Services\\Authorization\\Register\\RegisterRequestVerifier.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA5wCAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T10:59:39.818Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "ErrorEmailConfirmation.cs",
-              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\ErrorEmailConfirmation.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\Email\\ErrorEmailConfirmation.cs",
-              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\ErrorEmailConfirmation.cs",
-              "RelativeToolTip": "Services\\Authorization\\Email\\ErrorEmailConfirmation.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T15:40:11.888Z",
-=======
-              "DocumentIndex": 5,
               "Title": "ClaimsPrincipalFactory.cs",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\Login\\ClaimsPrincipalFactory.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Login\\ClaimsPrincipalFactory.cs",
               "RelativeDocumentMoniker": "Services\\Authorization\\Login\\ClaimsPrincipalFactory.cs",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\Login\\ClaimsPrincipalFactory.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Login\\ClaimsPrincipalFactory.cs",
               "RelativeToolTip": "Services\\Authorization\\Login\\ClaimsPrincipalFactory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T04:55:47.681Z",
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 8,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\EmailService.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\Email\\EmailService.cs",
-              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\EmailService.cs",
-              "RelativeToolTip": "Services\\Authorization\\Email\\EmailService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T15:25:16.014Z",
-=======
-              "DocumentIndex": 0,
-              "Title": "LoginService.cs",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\Login\\LoginService.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\Login\\LoginService.cs",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\Login\\LoginService.cs",
-              "RelativeToolTip": "Services\\Authorization\\Login\\LoginService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T04:19:48.244Z",
+              "WhenOpened": "2026-03-25T10:58:34.088Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\EmailService.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\EmailService.cs",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\EmailService.cs",
-              "RelativeToolTip": "Services\\Authorization\\EmailService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAtAAAAAAAAAA==",
+              "Title": "LoginLockoutService.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\LoginLockoutService.cs",
+              "RelativeDocumentMoniker": "Services\\Authorization\\Lockout\\LoginLockoutService.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\LoginLockoutService.cs",
+              "RelativeToolTip": "Services\\Authorization\\Lockout\\LoginLockoutService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T13:24:10.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PasswordHasher.cs",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\PasswordHasher.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\PasswordHasher.cs",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\PasswordHasher.cs",
-              "RelativeToolTip": "Services\\Authorization\\PasswordHasher.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T09:12:15.127Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Controllers\\Authorization\\AuthController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Authorization\\AuthController.cs",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Controllers\\Authorization\\AuthController.cs",
-              "RelativeToolTip": "Controllers\\Authorization\\AuthController.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAswGgAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T09:15:33.983Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FindUserService.cs",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\FindUserService.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\FindUserService.cs",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Authorization\\FindUserService.cs",
-              "RelativeToolTip": "Services\\Authorization\\FindUserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T05:44:25.061Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DbContext.cs",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\DbContext.cs",
-              "RelativeDocumentMoniker": "DbContext.cs",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\DbContext.cs",
-              "RelativeToolTip": "DbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T09:24:41.285Z",
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
+              "WhenOpened": "2026-03-25T10:57:40.997Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "CodeFactory.cs",
-              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\CodeFactory.cs",
-              "RelativeDocumentMoniker": "Services\\Authorization\\Email\\CodeFactory.cs",
-              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\CodeFactory.cs",
-              "RelativeToolTip": "Services\\Authorization\\Email\\CodeFactory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "Title": "EmailLockoutService.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\EmailLockoutService.cs",
+              "RelativeDocumentMoniker": "Services\\Authorization\\Lockout\\EmailLockoutService.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\EmailLockoutService.cs",
+              "RelativeToolTip": "Services\\Authorization\\Lockout\\EmailLockoutService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T15:25:17.561Z",
+              "WhenOpened": "2026-03-25T10:57:04.607Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "LockoutOptions.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\Options\\LockoutOptions.cs",
+              "RelativeDocumentMoniker": "Services\\Authorization\\Lockout\\Options\\LockoutOptions.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Lockout\\Options\\LockoutOptions.cs",
+              "RelativeToolTip": "Services\\Authorization\\Lockout\\Options\\LockoutOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T11:37:50.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ConfirmationCodeGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\ConfirmationCodeGenerator.cs",
+              "RelativeDocumentMoniker": "Services\\Authorization\\Email\\ConfirmationCodeGenerator.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Services\\Authorization\\Email\\ConfirmationCodeGenerator.cs",
+              "RelativeToolTip": "Services\\Authorization\\Email\\ConfirmationCodeGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T10:40:01.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Models\\Authorization\\User.cs",
               "RelativeDocumentMoniker": "Models\\Authorization\\User.cs",
               "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Models\\Authorization\\User.cs",
               "RelativeToolTip": "Models\\Authorization\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T05:51:33.26Z",
+              "WhenOpened": "2026-03-25T10:40:01.945Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 12,
-              "Title": "TelephoneCallRecording.http",
-              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\TelephoneCallRecording.http",
-              "RelativeDocumentMoniker": "TelephoneCallRecording.http",
-              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\TelephoneCallRecording.http",
-              "RelativeToolTip": "TelephoneCallRecording.http",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-03-25T07:57:37.447Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Controllers\\Authorization\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\Authorization\\AuthController.cs",
               "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Controllers\\Authorization\\AuthController.cs",
               "RelativeToolTip": "Controllers\\Authorization\\AuthController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAAmAAAAAAAAAA==",
-=======
-              "DocumentIndex": 11,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "appsettings.Development.json",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\appsettings.Development.json",
-              "RelativeToolTip": "appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-20T08:50:54.5Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAfAAAAAAAAAA==",
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T08:49:04.763Z",
+              "WhenOpened": "2026-03-25T10:40:01.953Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
               "DocumentIndex": 14,
+              "Title": "TelephoneCallRecording.http",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\TelephoneCallRecording.http",
+              "RelativeDocumentMoniker": "TelephoneCallRecording.http",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\TelephoneCallRecording.http",
+              "RelativeToolTip": "TelephoneCallRecording.http",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvx0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-03-25T10:40:01.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "20260324190526_InitAuthSchema.cs",
+              "DocumentMoniker": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Migrations\\20260324190526_InitAuthSchema.cs",
+              "RelativeDocumentMoniker": "Migrations\\20260324190526_InitAuthSchema.cs",
+              "ToolTip": "C:\\Users\\vnori\\Desktop\\Main\\\u0434\u043E\u043C\u044D\u0448\u043A\u0430\\5-\u0439 \u043A\u0443\u0440\u0441\\2 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\\u041B\u0430\u0431\u044B\\TelephoneCallRecording\\Migrations\\20260324190526_InitAuthSchema.cs",
+              "RelativeToolTip": "Migrations\\20260324190526_InitAuthSchema.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T10:40:01.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "EmailLockoutService.cs",
               "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Lockout\\EmailLockoutService.cs",
               "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Lockout\\EmailLockoutService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T15:23:11.927Z"
+              "WhenOpened": "2026-03-25T10:40:01.953Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "LoginLockoutService.cs",
               "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Lockout\\LoginLockoutService.cs",
               "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Services\\Lockout\\LoginLockoutService.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T15:48:29.21Z"
-=======
-              "DocumentIndex": 12,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "D:\\new_desctop\\Main\\\u0414\u043E\u043C\u0430\u0448\u043A\u0430\\5 \u043A\u0443\u0440\u0441\\\u0420\u043E\u043C\u0430\u0448\u043A\u0438\u043D\u0430\\TelephoneCallRecording\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-20T08:50:43.935Z"
->>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
+              "WhenOpened": "2026-03-25T10:40:01.961Z"
             }
           ]
         }

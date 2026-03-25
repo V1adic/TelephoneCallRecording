@@ -159,3 +159,4 @@ C:\Users\vnori\Desktop\Main\домэшка\5-й курс\2 семестр\Ром
 C:\Users\vnori\Desktop\Main\домэшка\5-й курс\2 семестр\Ромашкина\Лабы\TelephoneCallRecording\obj\Debug\net10.0\TelephoneCallRecording.pdb
 C:\Users\vnori\Desktop\Main\домэшка\5-й курс\2 семестр\Ромашкина\Лабы\TelephoneCallRecording\obj\Debug\net10.0\TelephoneCallRecording.genruntimeconfig.cache
 C:\Users\vnori\Desktop\Main\домэшка\5-й курс\2 семестр\Ромашкина\Лабы\TelephoneCallRecording\obj\Debug\net10.0\ref\TelephoneCallRecording.dll
+C:\Users\vnori\Desktop\Main\домэшка\5-й курс\2 семестр\Ромашкина\Лабы\TelephoneCallRecording\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

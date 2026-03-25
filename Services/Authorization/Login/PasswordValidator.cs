@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using TelephoneCallRecording.Models.Authorization;
-using TelephoneCallRecording.Services.Authorization.Lockout;
 using TelephoneCallRecording.Services.Cryptography.Authorization;
+using TelephoneCallRecording.Services.Lockout;
 
 namespace TelephoneCallRecording.Services.Authorization.Login
 {

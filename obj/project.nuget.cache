@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "OWe+6TwL79I=",
+=======
+  "dgSpecHash": "qAhHc4WzjxY=",
+>>>>>>> parent of 443dcdc (Refactor lockout services and update auth)
   "success": true,
   "projectFilePath": "C:\\Users\\vnori\\Desktop\\Main\\домэшка\\5-й курс\\2 семестр\\Ромашкина\\Лабы\\TelephoneCallRecording\\TelephoneCallRecording.csproj",
   "expectedPackageFiles": [

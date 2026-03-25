@@ -9,7 +9,7 @@ namespace TelephoneCallRecording.Services.Cryptography.Authorization
         private const int SaltSize = 16;           // байт
         private const int HashSize = 32;           // байт (256 бит)
         private const int MemorySize = 65536;      // KiB = 64 MiB
-        private const int Iterations = 5;
+        private const int Iterations = 3;
         private const int DegreeOfParallelism = 1;
 
         public static (string hash, string salt) HashPassword(string password)

@@ -1,5 +1,5 @@
 ﻿using TelephoneCallRecording.Models.Authorization;
-using TelephoneCallRecording.Services.Lockout;
+using TelephoneCallRecording.Services.Authorization.Lockout;
 
 namespace TelephoneCallRecording.Services.Authorization.Email
 {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\new_desctop\\Main\\Домашка\\5 курс\\Ромашкина\\TelephoneCallRecording\\TelephoneCallRecording.csproj": {}
+    "C:\\Users\\vnori\\Desktop\\Main\\домэшка\\5-й курс\\2 семестр\\Ромашкина\\Лабы\\TelephoneCallRecording\\TelephoneCallRecording.csproj": {}
   },
   "projects": {
-    "D:\\new_desctop\\Main\\Домашка\\5 курс\\Ромашкина\\TelephoneCallRecording\\TelephoneCallRecording.csproj": {
+    "C:\\Users\\vnori\\Desktop\\Main\\домэшка\\5-й курс\\2 семестр\\Ромашкина\\Лабы\\TelephoneCallRecording\\TelephoneCallRecording.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\new_desctop\\Main\\Домашка\\5 курс\\Ромашкина\\TelephoneCallRecording\\TelephoneCallRecording.csproj",
+        "projectUniqueName": "C:\\Users\\vnori\\Desktop\\Main\\домэшка\\5-й курс\\2 семестр\\Ромашкина\\Лабы\\TelephoneCallRecording\\TelephoneCallRecording.csproj",
         "projectName": "TelephoneCallRecording",
-        "projectPath": "D:\\new_desctop\\Main\\Домашка\\5 курс\\Ромашкина\\TelephoneCallRecording\\TelephoneCallRecording.csproj",
+        "projectPath": "C:\\Users\\vnori\\Desktop\\Main\\домэшка\\5-й курс\\2 семестр\\Ромашкина\\Лабы\\TelephoneCallRecording\\TelephoneCallRecording.csproj",
         "packagesPath": "C:\\Users\\vnori\\.nuget\\packages\\",
-        "outputPath": "D:\\new_desctop\\Main\\Домашка\\5 курс\\Ромашкина\\TelephoneCallRecording\\obj\\",
+        "outputPath": "C:\\Users\\vnori\\Desktop\\Main\\домэшка\\5-й курс\\2 семестр\\Ромашкина\\Лабы\\TelephoneCallRecording\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,6 +59,12 @@
               "version": "[10.0.5, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[10.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[10.0.5, )"
             },

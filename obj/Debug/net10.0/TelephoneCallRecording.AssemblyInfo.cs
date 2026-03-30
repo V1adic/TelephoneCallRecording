@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TelephoneCallRecording")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5928ac03bf9694d897decba3fd7cd70181484136")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed7b44d8a4704fa406568cf347929021d8dd3548")]
 [assembly: System.Reflection.AssemblyProductAttribute("TelephoneCallRecording")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TelephoneCallRecording")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

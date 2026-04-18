@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Options;
+using System.Security.Cryptography;
 using TelephoneCallRecording.Models.Authorization;
 using TelephoneCallRecording.Services.Authorization.Lockout;
 
@@ -9,7 +9,7 @@ namespace TelephoneCallRecording.Services.Authorization.Email
         bool IsValidCode(User? user, string incomingCodeHash);
     }
 
-    public class EmailConfirmationValidator: IEmailConfirmationValidator
+    public class EmailConfirmationValidator : IEmailConfirmationValidator
     {
         private readonly IEmailLockoutService _emailLockoutService;
 
@@ -17,35 +17,40 @@ namespace TelephoneCallRecording.Services.Authorization.Email
         {
             _emailLockoutService = emailLockoutService;
         }
+
         public bool IsValidCode(User? user, string incomingCodeHash)
         {
-            if (user == null)
+            if (user == null || user.IsEmailConfirmed)
             {
                 return false;
             }
-            else if (EmailLockoutService.AttemptLockout(user))
+
+            if (EmailLockoutService.AttemptLockout(user))
             {
                 return false;
             }
-            else if (user.IsEmailConfirmed)
+
+            if (user.EmailConfirmationCodeHash is null || user.EmailConfirmationExpires is null)
             {
                 _emailLockoutService.ErrorAttempt(user);
                 return false;
             }
-            else if (user.EmailConfirmationCodeHash != incomingCodeHash)
+
+            if (user.EmailConfirmationExpires < DateTime.UtcNow)
             {
                 _emailLockoutService.ErrorAttempt(user);
                 return false;
             }
-            else if (user.EmailConfirmationExpires < DateTime.UtcNow)
+
+            var storedHashBytes = Convert.FromBase64String(user.EmailConfirmationCodeHash);
+            var incomingHashBytes = Convert.FromBase64String(incomingCodeHash);
+            if (!CryptographicOperations.FixedTimeEquals(storedHashBytes, incomingHashBytes))
             {
                 _emailLockoutService.ErrorAttempt(user);
                 return false;
             }
-            else
-            {
-                return true;
-            }
+
+            return true;
         }
     }
 }

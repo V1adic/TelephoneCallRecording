@@ -1,0 +1,17 @@
+[Unit]
+Description=TelephoneCallRecording ASP.NET Core API
+After=network.target
+
+[Service]
+WorkingDirectory=/srv/telephone-call-recording/backend
+ExecStart=/usr/bin/dotnet /srv/telephone-call-recording/backend/TelephoneCallRecording.dll
+Restart=always
+RestartSec=5
+EnvironmentFile=/srv/telephone-call-recording/backend.env
+KillSignal=SIGINT
+SyslogIdentifier=telephone-call-recording
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target

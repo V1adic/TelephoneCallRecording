@@ -1,4 +1,6 @@
-﻿namespace TelephoneCallRecording.Models.Authorization
+using TelephoneCallRecording.Models.Calls;
+
+namespace TelephoneCallRecording.Models.Authorization
 {
     public class User
     {
@@ -23,5 +25,9 @@
         public int FailedEmailConfirmAttempts { get; set; }
 
         public DateTime? LockoutEnd { get; set; }
+
+        public int? SubscriberId { get; set; }
+
+        public Subscriber? Subscriber { get; set; }
     }
 }

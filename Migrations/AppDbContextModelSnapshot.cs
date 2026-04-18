@@ -80,6 +80,10 @@ namespace TelephoneCallRecording.Migrations
                         .HasColumnType("character varying(24)")
                         .HasColumnName("password_salt");
 
+                    b.Property<int?>("SubscriberId")
+                        .HasColumnType("integer")
+                        .HasColumnName("subscriber_id");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -91,10 +95,238 @@ namespace TelephoneCallRecording.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
+                    b.HasIndex("SubscriberId")
+                        .IsUnique()
+                        .HasFilter("\"subscriber_id\" IS NOT NULL");
+
                     b.HasIndex("Username")
                         .IsUnique();
 
                     b.ToTable("users", (string)null);
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Calls.CallRecord", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("call_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("integer")
+                        .HasColumnName("city_id");
+
+                    b.Property<string>("DestPhone")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
+                        .HasColumnName("dest_phone");
+
+                    b.Property<int?>("DurationMinutes")
+                        .HasColumnType("integer")
+                        .HasColumnName("duration_minutes");
+
+                    b.Property<long>("StartUnixTime")
+                        .HasColumnType("bigint")
+                        .HasColumnName("start_unix_time");
+
+                    b.Property<int>("SubscriberId")
+                        .HasColumnType("integer")
+                        .HasColumnName("subscriber_id");
+
+                    b.Property<string>("TimeOfDay")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("time_of_day");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("SubscriberId", "DestPhone");
+
+                    b.HasIndex("SubscriberId", "DestPhone", "DurationMinutes")
+                        .IsUnique()
+                        .HasFilter("\"duration_minutes\" IS NULL");
+
+                    b.ToTable("calls", (string)null);
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Calls.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("city_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("DayTariff")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)")
+                        .HasColumnName("day_tariff");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("name");
+
+                    b.Property<decimal>("NightTariff")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)")
+                        .HasColumnName("night_tariff");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("cities", (string)null);
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Calls.CityDiscount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("city_discount_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("integer")
+                        .HasColumnName("city_id");
+
+                    b.Property<decimal>("DiscountPercent")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("numeric(5,2)")
+                        .HasColumnName("discount_percent");
+
+                    b.Property<int?>("MaxMinutes")
+                        .HasColumnType("integer")
+                        .HasColumnName("max_minutes");
+
+                    b.Property<int>("MinMinutes")
+                        .HasColumnType("integer")
+                        .HasColumnName("min_minutes");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId", "MinMinutes")
+                        .IsUnique();
+
+                    b.ToTable("city_discounts", (string)null);
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Calls.Subscriber", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("subscriber_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("address");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("integer")
+                        .HasColumnName("city_id");
+
+                    b.Property<string>("Inn")
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("character varying(12)")
+                        .HasColumnName("inn");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
+                        .HasColumnName("phone_number");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique();
+
+                    b.ToTable("subscribers", (string)null);
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Authorization.User", b =>
+                {
+                    b.HasOne("TelephoneCallRecording.Models.Calls.Subscriber", "Subscriber")
+                        .WithOne("User")
+                        .HasForeignKey("TelephoneCallRecording.Models.Authorization.User", "SubscriberId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Subscriber");
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Calls.CallRecord", b =>
+                {
+                    b.HasOne("TelephoneCallRecording.Models.Calls.City", "City")
+                        .WithMany("Calls")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("TelephoneCallRecording.Models.Calls.Subscriber", "Subscriber")
+                        .WithMany("Calls")
+                        .HasForeignKey("SubscriberId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("City");
+
+                    b.Navigation("Subscriber");
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Calls.CityDiscount", b =>
+                {
+                    b.HasOne("TelephoneCallRecording.Models.Calls.City", "City")
+                        .WithMany("Discounts")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Calls.Subscriber", b =>
+                {
+                    b.HasOne("TelephoneCallRecording.Models.Calls.City", "City")
+                        .WithMany("Subscribers")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("City");
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Calls.City", b =>
+                {
+                    b.Navigation("Calls");
+
+                    b.Navigation("Discounts");
+
+                    b.Navigation("Subscribers");
+                });
+
+            modelBuilder.Entity("TelephoneCallRecording.Models.Calls.Subscriber", b =>
+                {
+                    b.Navigation("Calls");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

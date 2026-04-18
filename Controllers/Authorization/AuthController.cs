@@ -1,95 +1,218 @@
-﻿using Microsoft.AspNetCore.Authentication;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Antiforgery;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using System.ComponentModel.DataAnnotations;
 using TelephoneCallRecording.Services.Authorization.Email;
 using TelephoneCallRecording.Services.Authorization.Login;
 using TelephoneCallRecording.Services.Authorization.Register;
+using TelephoneCallRecording.Services.DataBase.Authorization;
+using TelephoneCallRecording.Services.Security;
 
 namespace TelephoneCallRecording.Controllers.Authorization
 {
     [ApiController]
     [Route("auth")]
-    public class AuthController : Controller
+    public class AuthController : ControllerBase
     {
+        public record AuthMessageResponse(string Code, string Message);
+        public record AuthCsrfResponse(string Token);
+        public record LoginRequest([Required, MaxLength(15), MinLength(5)] string Username, [Required, MinLength(12), MaxLength(100)] string Password);
+        public record RegisterRequest(
+            [Required, MaxLength(15), MinLength(5)] string Username,
+            [Required, MinLength(12), MaxLength(100)] string Password,
+            [Required, MaxLength(100)] string Email,
+            [Required, MaxLength(20)] string PhoneNumber,
+            [Required, MaxLength(12)] string Inn,
+            [Required, MaxLength(250)] string Address,
+            [Required] int CityId);
+        public record ConfirmEmailRequest([Required, MaxLength(20)] string Code);
+        public record ProfileResponse(string Username, string Email, bool IsEmailConfirmed, string? PhoneNumber, string? City);
+
+        private readonly IAntiforgery _antiforgery;
         private readonly ILoginService _loginService;
         private readonly IRegisterService _registerService;
         private readonly IEmailService _emailService;
+        private readonly IUserRepository _userRepository;
+        private readonly IVerificationCookieService _verificationCookieService;
 
         public AuthController(
+            IAntiforgery antiforgery,
             ILoginService loginService,
             IRegisterService registerService,
-            IEmailService emailService)
+            IEmailService emailService,
+            IUserRepository userRepository,
+            IVerificationCookieService verificationCookieService)
         {
+            _antiforgery = antiforgery;
             _loginService = loginService;
             _registerService = registerService;
             _emailService = emailService;
+            _userRepository = userRepository;
+            _verificationCookieService = verificationCookieService;
         }
 
-        public record LoginRequest([Required, MaxLength(15), MinLength(5)] string Username, [Required, MinLength(12), MaxLength(100)] string Password);
-        public record RegisterRequest([Required, MaxLength(15), MinLength(5)] string Username, [Required, MinLength(12), MaxLength(100)] string Password, [Required, MaxLength(100)] string Email);
-        public record RequestConfirmationRequest([Required, MaxLength(15)] string Username);
-        public record ConfirmEmailRequest([Required, MaxLength(15)] string Username, [Required, MaxLength(20)] string Code);
+        [HttpGet("csrf")]
+        [AllowAnonymous]
+        public IActionResult GetCsrfToken()
+        {
+            var tokens = _antiforgery.GetAndStoreTokens(HttpContext);
+            return Ok(new AuthCsrfResponse(tokens.RequestToken ?? string.Empty));
+        }
 
         [HttpPost("login")]
-        [EnableRateLimiting("login")]
+        [EnableRateLimiting("auth")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var principal = await _loginService.AttemptLogin(request.Username, request.Password);
+            var result = await _loginService.AttemptLogin(request.Username.Trim(), request.Password);
+            if (!result.Success || result.Principal == null)
+            {
+                return result.Code == "locked"
+                    ? StatusCode(StatusCodes.Status423Locked, new AuthMessageResponse(result.Code, result.Message))
+                    : Unauthorized(new AuthMessageResponse(result.Code, result.Message));
+            }
 
-            if (principal == null)
-                return Unauthorized();
+            await HttpContext.SignInAsync("cookie", result.Principal);
 
-            await HttpContext.SignInAsync("cookie", principal);
+            var rawUserId = result.Principal.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(rawUserId, out var userId))
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new AuthMessageResponse("profile_unavailable", "Не удалось загрузить профиль после входа."));
+            }
 
-            return Ok();
+            var user = await _userRepository.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new AuthMessageResponse("profile_unavailable", "Не удалось загрузить профиль после входа."));
+            }
+
+            return Ok(CreateProfileResponse(user));
         }
 
         [HttpPost("register")]
-        [EnableRateLimiting("login")]
+        [EnableRateLimiting("auth")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
-            var trimmedUsername = request.Username.Trim();
-            var trimmedEmail = request.Email.Trim();
+            var result = await _registerService.AttemptRegister(
+                request.Username.Trim(),
+                request.Password,
+                request.Email.Trim(),
+                request.PhoneNumber.Trim(),
+                request.Inn.Trim(),
+                request.Address.Trim(),
+                request.CityId);
 
-            if (await _registerService.AttemptRegister(trimmedUsername, request.Password, trimmedEmail))
+            if (result.Success && result.User != null)
             {
-                return Ok();
+                _verificationCookieService.Issue(HttpContext, result.User.Username);
+                return Ok(new AuthMessageResponse(result.Code, result.Message));
             }
-            else
+
+            return result.Code switch
             {
-                return BadRequest();
+                "duplicate_username" or "duplicate_email" or "duplicate_phone" => Conflict(new AuthMessageResponse(result.Code, result.Message)),
+                "city_not_found" or "invalid_request" => BadRequest(new AuthMessageResponse(result.Code, result.Message)),
+                _ => StatusCode(StatusCodes.Status500InternalServerError, new AuthMessageResponse(result.Code, result.Message))
+            };
+        }
+
+        [HttpPost("request-confirmation")]
+        [EnableRateLimiting("auth")]
+        public async Task<IActionResult> RequestConfirmation()
+        {
+            if (!_verificationCookieService.TryGetUsername(HttpContext, out var username))
+            {
+                return Unauthorized(new AuthMessageResponse("verification_missing", "Сессия подтверждения истекла."));
             }
+
+            var result = await _emailService.RequestConfirmationCodeAsync(username);
+            return result.Success
+                ? Ok(new AuthMessageResponse(result.Code, result.Message))
+                : result.Code == "locked"
+                    ? StatusCode(StatusCodes.Status423Locked, new AuthMessageResponse(result.Code, result.Message))
+                    : BadRequest(new AuthMessageResponse(result.Code, result.Message));
         }
 
         [HttpPost("confirm-email")]
-        [EnableRateLimiting("login")]
+        [EnableRateLimiting("auth")]
         public async Task<IActionResult> ConfirmEmail([FromBody] ConfirmEmailRequest request)
         {
-            if (!await _emailService.AttemptEmailConfirmationAsync(request.Username, request.Code))
+            if (!_verificationCookieService.TryGetUsername(HttpContext, out var username))
             {
-                return BadRequest();
+                return Unauthorized(new AuthMessageResponse("verification_missing", "Сессия подтверждения истекла."));
             }
 
-            // TODO: Выдать токен для подтвержденного пользователя
-            return Ok();
+            var result = await _emailService.AttemptEmailConfirmationAsync(username, request.Code);
+            if (!result.Success)
+            {
+                return BadRequest(new AuthMessageResponse(result.Code, result.Message));
+            }
+
+            _verificationCookieService.Clear(HttpContext);
+            return Ok(new AuthMessageResponse(result.Code, result.Message));
         }
 
         [Authorize]
         [HttpGet("profile")]
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
-            return Ok(User.Identity!.Name);
+            var userId = TryGetUserId();
+            if (userId == null)
+            {
+                return Unauthorized(new AuthMessageResponse("unauthorized", "Пользователь не авторизован."));
+            }
+
+            var user = await _userRepository.FindByIdAsync(userId.Value);
+            if (user == null)
+            {
+                return Unauthorized(new AuthMessageResponse("unauthorized", "Пользователь не найден."));
+            }
+
+            return Ok(CreateProfileResponse(user));
         }
 
+        [Authorize]
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync("cookie");
+            if (!await ValidateCsrfAsync())
+            {
+                return BadRequest(new AuthMessageResponse("csrf_invalid", "Токен CSRF недействителен."));
+            }
 
-            // TODO: Реализовать отзыв токенов при выходе, если будет использоваться JWT
-            return Ok();
+            await HttpContext.SignOutAsync("cookie");
+            return Ok(new AuthMessageResponse("logged_out", "Вы вышли из системы."));
+        }
+
+        private int? TryGetUserId()
+        {
+            var rawUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return int.TryParse(rawUserId, out var userId) ? userId : null;
+        }
+
+        private async Task<bool> ValidateCsrfAsync()
+        {
+            try
+            {
+                await _antiforgery.ValidateRequestAsync(HttpContext);
+                return true;
+            }
+            catch (AntiforgeryValidationException)
+            {
+                return false;
+            }
+        }
+
+        private static ProfileResponse CreateProfileResponse(Models.Authorization.User user)
+        {
+            return new ProfileResponse(
+                user.Username,
+                user.Email,
+                user.IsEmailConfirmed,
+                user.Subscriber?.PhoneNumber,
+                user.Subscriber?.City?.Name);
         }
     }
 }

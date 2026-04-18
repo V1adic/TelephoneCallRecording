@@ -1,41 +1,23 @@
-﻿using Microsoft.Extensions.Options;
 using TelephoneCallRecording.Models.Authorization;
-using TelephoneCallRecording.Services.Authorization.Email;
-using TelephoneCallRecording.Services.Authorization.Lockout.Options;
 
-public interface IUserVerificationService
+namespace TelephoneCallRecording.Services.Authorization.Lockout
 {
-    Task TriggerEmailVerificationAsync(User user);
-    bool RequiresVerification(User user);
-}
-
-public class UserVerificationService : IUserVerificationService
-{
-    private readonly IConfirmationCodeGenerator _codeGenerator;
-    private readonly IEmailService _emailService;
-    private readonly IOptions<LockoutOptions> _options;
-
-    public UserVerificationService(IConfirmationCodeGenerator codeGenerator, IEmailService emailService, IOptions<LockoutOptions> options)
+    public interface IUserVerificationService
     {
-        _codeGenerator = codeGenerator;
-        _emailService = emailService;
-        _options = options;
+        Task TriggerEmailVerificationAsync(User user);
+        bool RequiresVerification(User user);
     }
 
-    public async Task TriggerEmailVerificationAsync(User user)
+    public class UserVerificationService : IUserVerificationService
     {
-        (string codeHash, string code) = _codeGenerator.Generate();
+        public Task TriggerEmailVerificationAsync(User user)
+        {
+            return Task.CompletedTask;
+        }
 
-        user.IsEmailConfirmed = false;
-        user.EmailConfirmationCodeHash = codeHash;
-        user.EmailConfirmationExpires = DateTime.UtcNow.AddMinutes(_options.Value.CodeExpirationMinutes);
-
-        await _emailService.SendConfirmationCodeAsync(user.Email, code);
-    }
-
-    public bool RequiresVerification(User user)
-    {
-        // TODO: здесь будет сложная логика на основе логов/2FA-политики
-        return true; // или false, если уже подтверждён и т.д.
+        public bool RequiresVerification(User user)
+        {
+            return false;
+        }
     }
 }

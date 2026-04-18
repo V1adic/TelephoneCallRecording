@@ -13,17 +13,17 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/auth': {
-        target: 'https://localhost:7181',
+        target: 'http://localhost:5070',
         changeOrigin: true,
         secure: false
       },
       '/calls': {
-        target: 'https://localhost:7181',
+        target: 'http://localhost:5070',
         changeOrigin: true,
         secure: false
       },
       '/health': {
-        target: 'https://localhost:7181',
+        target: 'http://localhost:5070',
         changeOrigin: true,
         secure: false
       }

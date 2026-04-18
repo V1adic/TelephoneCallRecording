@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Scalar.AspNetCore;
 using System.Net;
 using System.Threading.RateLimiting;
@@ -114,7 +115,7 @@ builder.Services.AddAntiforgery(options =>
     options.Cookie.SameSite = SameSiteMode.Strict;
     options.Cookie.SecurePolicy = isDevelopment
         ? CookieSecurePolicy.None
-        : CookieSecurePolicy.Always;
+        : CookieSecurePolicy.None; // TODO: Always when HTTPS is set up
 });
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -143,8 +144,11 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseForwardedHeaders();
-app.UseHttpsRedirection();
+var forwardedHeadersOptions = app.Services
+    .GetRequiredService<IOptions<ForwardedHeadersOptions>>().Value;
+
+app.UseForwardedHeaders(forwardedHeadersOptions);
+//app.UseHttpsRedirection();
 app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();

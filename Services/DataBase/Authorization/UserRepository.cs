@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using TelephoneCallRecording.Models.Authorization;
 
@@ -6,8 +6,10 @@ namespace TelephoneCallRecording.Services.DataBase.Authorization
 {
     public interface IUserRepository
     {
+        Task<User?> FindByIdAsync(int userId);
         Task<User?> FindByUsernameAsync(string username);
         Task<bool> ExistsByUsernameAsync(string username);
+        Task<bool> ExistsByEmailAsync(string email);
         Task AddAsync(User user);
         Task SaveChangesAsync();
         Task<IDbContextTransaction> BeginTransactionAsync();
@@ -24,15 +26,30 @@ namespace TelephoneCallRecording.Services.DataBase.Authorization
             _db = db;
         }
 
+        public async Task<User?> FindByIdAsync(int userId)
+        {
+            return await _db.Users
+                .Include(x => x.Subscriber)
+                .ThenInclude(x => x!.City)
+                .FirstOrDefaultAsync(x => x.Id == userId);
+        }
+
         public async Task<User?> FindByUsernameAsync(string username)
         {
             return await _db.Users
+                .Include(x => x.Subscriber)
+                .ThenInclude(x => x!.City)
                 .FirstOrDefaultAsync(x => x.Username == username);
         }
 
         public async Task<bool> ExistsByUsernameAsync(string username)
         {
             return await _db.Users.AnyAsync(x => x.Username == username);
+        }
+
+        public async Task<bool> ExistsByEmailAsync(string email)
+        {
+            return await _db.Users.AnyAsync(x => x.Email == email);
         }
 
         public Task AddAsync(User user)
@@ -53,14 +70,12 @@ namespace TelephoneCallRecording.Services.DataBase.Authorization
 
         public async Task CommitTransactionAsync(IDbContextTransaction transaction)
         {
-            if (transaction != null)
-                await transaction.CommitAsync();
+            await transaction.CommitAsync();
         }
 
         public async Task RollbackTransactionAsync(IDbContextTransaction transaction)
         {
-            if (transaction != null)
-                await transaction.RollbackAsync();
+            await transaction.RollbackAsync();
         }
     }
 }

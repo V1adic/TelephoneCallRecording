@@ -1,29 +1,50 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using TelephoneCallRecording.Models.Authorization;
+using TelephoneCallRecording.Models.Calls;
 using TelephoneCallRecording.Services.Authorization.Email;
 using TelephoneCallRecording.Services.Authorization.Lockout.Options;
-using TelephoneCallRecording.Services.Authorization.Register;
 using TelephoneCallRecording.Services.Cryptography.Authorization;
 using TelephoneCallRecording.Services.DataBase.Authorization;
 
 namespace TelephoneCallRecording.Services.Authorization.Register
 {
+    public sealed record RegisterAttemptResult(
+        bool Success,
+        string Code,
+        string Message,
+        User? User = null);
+
     public interface IRegisterService
     {
-        Task<bool> AttemptRegister(string username, string password, string email);
+        Task<RegisterAttemptResult> AttemptRegister(
+            string username,
+            string password,
+            string email,
+            string phoneNumber,
+            string inn,
+            string address,
+            int cityId);
     }
 
     public class RegisterService : IRegisterService
     {
+        private readonly AppDbContext _db;
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IConfirmationCodeGenerator _codeGenerator;
         private readonly IEmailService _emailService;
-        private readonly IOptions<Lockout.Options.LockoutOptions> _emailOptions;
+        private readonly IOptions<LockoutOptions> _emailOptions;
 
-        public RegisterService(IUserRepository userRepository, IPasswordHasher passwordHasher, IConfirmationCodeGenerator codeGenerator, IEmailService emailService, IOptions<Lockout.Options.LockoutOptions> emailOptions)
+        public RegisterService(
+            AppDbContext db,
+            IUserRepository userRepository,
+            IPasswordHasher passwordHasher,
+            IConfirmationCodeGenerator codeGenerator,
+            IEmailService emailService,
+            IOptions<LockoutOptions> emailOptions)
         {
+            _db = db;
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
             _codeGenerator = codeGenerator;
@@ -31,24 +52,54 @@ namespace TelephoneCallRecording.Services.Authorization.Register
             _emailOptions = emailOptions;
         }
 
-        public async Task<bool> AttemptRegister(string username, string password, string email)
+        public async Task<RegisterAttemptResult> AttemptRegister(
+            string username,
+            string password,
+            string email,
+            string phoneNumber,
+            string inn,
+            string address,
+            int cityId)
         {
-            var requestValidation = RegisterRequestVerifier.IsValid(username, password, email);
+            var requestValidation = RegisterRequestVerifier.IsValid(
+                username,
+                password,
+                email,
+                phoneNumber,
+                inn,
+                address);
             if (!string.IsNullOrEmpty(requestValidation))
-                return false;
+                return new RegisterAttemptResult(false, "invalid_request", "Проверьте введённые данные.");
+
+            if (!await _db.Cities.AnyAsync(x => x.Id == cityId))
+                return new RegisterAttemptResult(false, "city_not_found", "Выбранный город недоступен.");
+
+            if (await _userRepository.ExistsByUsernameAsync(username))
+                return new RegisterAttemptResult(false, "duplicate_username", "Пользователь с таким именем уже существует.");
+
+            if (await _userRepository.ExistsByEmailAsync(email))
+                return new RegisterAttemptResult(false, "duplicate_email", "Пользователь с таким email уже существует.");
+
+            if (await _db.Subscribers.AnyAsync(x => x.PhoneNumber == phoneNumber))
+                return new RegisterAttemptResult(false, "duplicate_phone", "Абонент с таким номером уже зарегистрирован.");
 
             var (hash, salt) = _passwordHasher.HashPassword(password);
-            (string codeHash, string code) = _codeGenerator.Generate();
+            var (codeHash, code) = _codeGenerator.Generate();
 
             await using var transaction = await _userRepository.BeginTransactionAsync();
 
             try
             {
-                if (await _userRepository.ExistsByUsernameAsync(username))
+                var subscriber = new Subscriber
                 {
-                    await _userRepository.RollbackTransactionAsync(transaction);
-                    return false;
-                }
+                    PhoneNumber = phoneNumber,
+                    Inn = inn,
+                    Address = address,
+                    CityId = cityId
+                };
+
+                await _db.Subscribers.AddAsync(subscriber);
+                await _db.SaveChangesAsync();
 
                 var user = new User
                 {
@@ -58,21 +109,24 @@ namespace TelephoneCallRecording.Services.Authorization.Register
                     PasswordSalt = salt,
                     IsEmailConfirmed = false,
                     EmailConfirmationCodeHash = codeHash,
-                    EmailConfirmationExpires = DateTime.UtcNow.AddMinutes(_emailOptions.Value.CodeExpirationMinutes)
+                    EmailConfirmationExpires = DateTime.UtcNow.AddMinutes(_emailOptions.Value.CodeExpirationMinutes),
+                    SubscriberId = subscriber.Id,
+                    Subscriber = subscriber
                 };
 
                 await _userRepository.AddAsync(user);
                 await _userRepository.SaveChangesAsync();
-
                 await _userRepository.CommitTransactionAsync(transaction);
 
-                await _emailService.SendConfirmationCodeAsync(email, code);
-                return true;
+                var delivered = await _emailService.SendConfirmationCodeAsync(email, code);
+                return delivered
+                    ? new RegisterAttemptResult(true, "registered", "Аккаунт создан. Подтвердите email кодом из письма.", user)
+                    : new RegisterAttemptResult(true, "registered_delivery_failed", "Аккаунт создан, но письмо не отправлено. Проверьте настройки SMTP или запросите код повторно.", user);
             }
-            catch (Exception)
+            catch
             {
                 await _userRepository.RollbackTransactionAsync(transaction);
-                return false;
+                return new RegisterAttemptResult(false, "server_error", "Не удалось завершить регистрацию.");
             }
         }
     }

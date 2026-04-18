@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Options;
 using TelephoneCallRecording.Models.Authorization;
 using TelephoneCallRecording.Services.Authorization.Lockout.Options;
 
@@ -8,25 +8,28 @@ namespace TelephoneCallRecording.Services.Authorization.Lockout
     {
         void ErrorAttempt(User user);
     }
+
     public class EmailLockoutService : IEmailLockoutService
     {
         private readonly IOptions<LockoutOptions> _options;
+
         public EmailLockoutService(IOptions<LockoutOptions> options)
         {
             _options = options;
         }
-        static public bool AttemptLockout(User user)
+
+        public static bool AttemptLockout(User user)
         {
-            bool accountLocked = false;
-            // Проверяем не заблокирован ли пользователь и разблокируем его, если срок блокировки истек
+            var accountLocked = false;
             if (user.LockoutEnd.HasValue && user.LockoutEnd > DateTime.UtcNow)
             {
                 accountLocked = true;
             }
-            else if (user.EmailConfirmationCodeHash != null)
+            else if (user.LockoutEnd.HasValue)
             {
                 ErrorReset(user);
             }
+
             return accountLocked;
         }
 
@@ -39,7 +42,7 @@ namespace TelephoneCallRecording.Services.Authorization.Lockout
             }
         }
 
-        static private void ErrorReset(User user)
+        private static void ErrorReset(User user)
         {
             user.FailedEmailConfirmAttempts = 0;
             user.LockoutEnd = null;

@@ -35,6 +35,7 @@ namespace TelephoneCallRecording.Services.Authorization.Register
         private readonly IConfirmationCodeGenerator _codeGenerator;
         private readonly IEmailService _emailService;
         private readonly IOptions<LockoutOptions> _emailOptions;
+        private readonly ILogger<RegisterService> _logger;
 
         public RegisterService(
             AppDbContext db,
@@ -42,7 +43,8 @@ namespace TelephoneCallRecording.Services.Authorization.Register
             IPasswordHasher passwordHasher,
             IConfirmationCodeGenerator codeGenerator,
             IEmailService emailService,
-            IOptions<LockoutOptions> emailOptions)
+            IOptions<LockoutOptions> emailOptions,
+            ILogger<RegisterService> logger)
         {
             _db = db;
             _userRepository = userRepository;
@@ -50,6 +52,7 @@ namespace TelephoneCallRecording.Services.Authorization.Register
             _codeGenerator = codeGenerator;
             _emailService = emailService;
             _emailOptions = emailOptions;
+            _logger = logger;
         }
 
         public async Task<RegisterAttemptResult> AttemptRegister(
@@ -111,7 +114,8 @@ namespace TelephoneCallRecording.Services.Authorization.Register
                     EmailConfirmationCodeHash = codeHash,
                     EmailConfirmationExpires = DateTime.UtcNow.AddMinutes(_emailOptions.Value.CodeExpirationMinutes),
                     SubscriberId = subscriber.Id,
-                    Subscriber = subscriber
+                    Subscriber = subscriber,
+                    Role = "Client"
                 };
 
                 await _userRepository.AddAsync(user);
@@ -125,6 +129,7 @@ namespace TelephoneCallRecording.Services.Authorization.Register
             }
             catch
             {
+                _logger.LogError("Registration transaction failed for username {Username}.", username);
                 await _userRepository.RollbackTransactionAsync(transaction);
                 return new RegisterAttemptResult(false, "server_error", "Не удалось завершить регистрацию.");
             }

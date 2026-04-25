@@ -1,12 +1,21 @@
 <template>
   <AuthShell
     title="Подтверждение email"
-    lead="Verification-cookie хранит короткую сессию подтверждения. Если код истёк, можно тут же запросить новый, не выходя из сценария."
+    lead="Verification-cookie хранит короткую сессию подтверждения. Если код истёк, новый можно запросить здесь же, не теряя текущий защищённый сценарий."
   >
-    <form class="stack" @submit.prevent="submit">
-      <div class="form-copy">
-        <h2>Введите код</h2>
-        <p>Код действует 15 минут. После подтверждения можно сразу вернуться к входу.</p>
+    <form class="space-y-6" @submit.prevent="submit">
+      <div class="space-y-3">
+        <span class="badge-shell text-xs uppercase tracking-[0.22em] text-cyan-100">
+          Email Verification
+        </span>
+        <div>
+          <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-[2.2rem]">
+            Введите код
+          </h2>
+          <p class="mt-3 text-sm leading-6 text-slate-300">
+            Код действует 15 минут. После успешного подтверждения можно сразу возвращаться ко входу.
+          </p>
+        </div>
       </div>
 
       <MessageBanner
@@ -16,20 +25,22 @@
         :tone="messageTone"
       />
 
-      <label class="field">
-        <span>Confirmation code</span>
-        <input v-model.trim="code" required maxlength="20" />
+      <label class="block space-y-2">
+        <span class="text-sm font-medium text-slate-300">Код подтверждения</span>
+        <input v-model.trim="code" class="input-shell" required maxlength="20" />
       </label>
 
-      <button class="primary-button" :disabled="isSubmitting">
+      <button class="btn-primary w-full" :disabled="isSubmitting">
         {{ isSubmitting ? 'Проверяем...' : 'Подтвердить email' }}
       </button>
 
-      <button class="ghost-button" type="button" :disabled="isSubmitting || isResending" @click="resend">
+      <button class="btn-secondary w-full" type="button" :disabled="isSubmitting || isResending" @click="resend">
         {{ isResending ? 'Отправляем новый код...' : 'Запросить новый код' }}
       </button>
 
-      <RouterLink class="text-link" to="/login">Вернуться ко входу</RouterLink>
+      <RouterLink class="inline-flex text-sm font-semibold text-cyan-200 transition hover:text-white" to="/login">
+        Вернуться ко входу
+      </RouterLink>
     </form>
   </AuthShell>
 </template>

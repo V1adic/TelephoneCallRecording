@@ -29,5 +29,7 @@ namespace TelephoneCallRecording.Models.Authorization
         public int? SubscriberId { get; set; }
 
         public Subscriber? Subscriber { get; set; }
+
+        public string Role { get; set; } = "Client";
     }
 }

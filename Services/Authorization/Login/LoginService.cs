@@ -19,11 +19,13 @@ namespace TelephoneCallRecording.Services.Authorization.Login
     {
         private readonly IUserRepository _userRepository;
         private readonly IPasswordValidator _passwordValidator;
+        private readonly ILogger<LoginService> _logger;
 
-        public LoginService(IUserRepository userRepository, IPasswordValidator passwordValidator)
+        public LoginService(IUserRepository userRepository, IPasswordValidator passwordValidator, ILogger<LoginService> logger)
         {
             _userRepository = userRepository;
             _passwordValidator = passwordValidator;
+            _logger = logger;
         }
 
         public async Task<LoginAttemptResult> AttemptLogin(string username, string password)
@@ -67,6 +69,7 @@ namespace TelephoneCallRecording.Services.Authorization.Login
             }
             catch
             {
+                _logger.LogError("Login transaction failed for username {Username}.", username);
                 await _userRepository.RollbackTransactionAsync(transaction);
                 return new LoginAttemptResult(false, null, "server_error", "Не удалось выполнить вход.");
             }

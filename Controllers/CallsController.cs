@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -13,15 +12,12 @@ namespace TelephoneCallRecording.Controllers
     public class CallsController : ControllerBase
     {
         public record CallsMessageResponse(string Code, string Message);
-        public record StartCallRequest([Required, MaxLength(20)] string DestPhone);
-        public record EndCallRequest([Required, MaxLength(20)] string DestPhone);
-
-        private readonly IAntiforgery _antiforgery;
+        public record StartCallRequest([Required, MaxLength(20), RegularExpression(@"^\+\d{11,15}$")] string DestPhone);
+        public record EndCallRequest([Required, MaxLength(20), RegularExpression(@"^\+\d{11,15}$")] string DestPhone);
         private readonly ICallBillingService _callBillingService;
 
-        public CallsController(IAntiforgery antiforgery, ICallBillingService callBillingService)
+        public CallsController(ICallBillingService callBillingService)
         {
-            _antiforgery = antiforgery;
             _callBillingService = callBillingService;
         }
 
@@ -52,11 +48,6 @@ namespace TelephoneCallRecording.Controllers
         [HttpPost("start")]
         public async Task<IActionResult> StartCall([FromBody] StartCallRequest request, CancellationToken cancellationToken)
         {
-            if (!await ValidateCsrfAsync())
-            {
-                return BadRequest(new CallsMessageResponse("csrf_invalid", "Токен CSRF недействителен."));
-            }
-
             var userId = TryGetUserId();
             if (userId == null)
             {
@@ -79,11 +70,6 @@ namespace TelephoneCallRecording.Controllers
         [HttpPost("end")]
         public async Task<IActionResult> EndCall([FromBody] EndCallRequest request, CancellationToken cancellationToken)
         {
-            if (!await ValidateCsrfAsync())
-            {
-                return BadRequest(new CallsMessageResponse("csrf_invalid", "Токен CSRF недействителен."));
-            }
-
             var userId = TryGetUserId();
             if (userId == null)
             {
@@ -100,23 +86,69 @@ namespace TelephoneCallRecording.Controllers
             };
         }
 
+        [Authorize]
+        [HttpGet("history")]
+        public async Task<IActionResult> GetHistory([FromQuery] DateTime? from, [FromQuery] DateTime? to, CancellationToken cancellationToken)
+        {
+            var userId = TryGetUserId();
+            if (userId == null)
+            {
+                return Unauthorized(new CallsMessageResponse("unauthorized", "Требуется авторизация."));
+            }
+
+            if (!TryNormalizePeriod(from, to, out var periodStartUtc, out var periodEndUtc, out var error))
+            {
+                return BadRequest(new CallsMessageResponse("validation_error", error));
+            }
+
+            var history = await _callBillingService.GetCallHistoryAsync(userId.Value, periodStartUtc, periodEndUtc, cancellationToken);
+            return Ok(history);
+        }
+
+        [Authorize]
+        [HttpGet("summary")]
+        public async Task<IActionResult> GetSummary([FromQuery] DateTime? from, [FromQuery] DateTime? to, CancellationToken cancellationToken)
+        {
+            var userId = TryGetUserId();
+            if (userId == null)
+            {
+                return Unauthorized(new CallsMessageResponse("unauthorized", "Требуется авторизация."));
+            }
+
+            if (!TryNormalizePeriod(from, to, out var periodStartUtc, out var periodEndUtc, out var error))
+            {
+                return BadRequest(new CallsMessageResponse("validation_error", error));
+            }
+
+            var summary = await _callBillingService.GetCallSummaryAsync(userId.Value, periodStartUtc, periodEndUtc, cancellationToken);
+            return Ok(summary);
+        }
+
         private int? TryGetUserId()
         {
             var rawUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return int.TryParse(rawUserId, out var userId) ? userId : null;
         }
 
-        private async Task<bool> ValidateCsrfAsync()
+        private static bool TryNormalizePeriod(DateTime? from, DateTime? to, out DateTime periodStartUtc, out DateTime periodEndUtc, out string error)
         {
-            try
+            periodEndUtc = (to ?? DateTime.UtcNow).ToUniversalTime();
+            periodStartUtc = (from ?? periodEndUtc.AddDays(-30)).ToUniversalTime();
+            error = string.Empty;
+
+            if (periodStartUtc >= periodEndUtc)
             {
-                await _antiforgery.ValidateRequestAsync(HttpContext);
-                return true;
-            }
-            catch (AntiforgeryValidationException)
-            {
+                error = "Дата начала периода должна быть раньше даты окончания.";
                 return false;
             }
+
+            if ((periodEndUtc - periodStartUtc).TotalDays > 366)
+            {
+                error = "Период отчёта не должен превышать 366 дней.";
+                return false;
+            }
+
+            return true;
         }
     }
 }

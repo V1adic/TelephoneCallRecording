@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import { useAuthStore } from './stores/auth'
-import './styles.css'
+import './tailwind.css'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -14,7 +14,7 @@ app.use(router)
 const authStore = useAuthStore(pinia)
 
 router.beforeEach(async (to) => {
-  if (!authStore.isBootstrapped && !authStore.isBootstrapping) {
+  if (!authStore.isBootstrapped) {
     await authStore.bootstrap()
   }
 
@@ -25,8 +25,12 @@ router.beforeEach(async (to) => {
     }
   }
 
-  if (to.meta.guestOnly && authStore.isAuthenticated) {
+  if (to.meta.adminOnly && authStore.profile?.role !== 'Admin') {
     return '/dashboard'
+  }
+
+  if (to.meta.guestOnly && authStore.isAuthenticated) {
+    return authStore.profile?.role === 'Admin' ? '/admin' : '/dashboard'
   }
 
   return true

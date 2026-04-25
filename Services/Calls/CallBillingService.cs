@@ -5,6 +5,25 @@ using TelephoneCallRecording.Services.DataBase.Authorization;
 namespace TelephoneCallRecording.Services.Calls
 {
     public sealed record CityOption(int Id, string Name);
+    public sealed record CallHistoryItem(
+        int CallId,
+        string DestPhone,
+        string DestinationCity,
+        DateTimeOffset StartedAtUtc,
+        int DurationMinutes,
+        string TimeOfDay,
+        decimal AppliedTariff,
+        decimal DiscountPercent,
+        decimal BaseCost,
+        decimal FinalCost);
+
+    public sealed record CallSummaryView(
+        DateTime FromUtc,
+        DateTime ToUtc,
+        int TotalCalls,
+        int TotalMinutes,
+        decimal BaseCost,
+        decimal TotalCost);
 
     public sealed record ActiveCallView(string DestPhone, DateTimeOffset StartedAtUtc, string TimeOfDay);
 
@@ -31,6 +50,8 @@ namespace TelephoneCallRecording.Services.Calls
     {
         Task<IReadOnlyList<CityOption>> GetCitiesAsync(CancellationToken cancellationToken = default);
         Task<ActiveCallView?> GetActiveCallAsync(int userId, CancellationToken cancellationToken = default);
+        Task<IReadOnlyList<CallHistoryItem>> GetCallHistoryAsync(int userId, DateTime fromUtc, DateTime toUtc, CancellationToken cancellationToken = default);
+        Task<CallSummaryView> GetCallSummaryAsync(int userId, DateTime fromUtc, DateTime toUtc, CancellationToken cancellationToken = default);
         Task<CallStartResult> StartCallAsync(int userId, string destPhone, CancellationToken cancellationToken = default);
         Task<CallEndResult> EndCallAsync(int userId, string destPhone, CancellationToken cancellationToken = default);
     }
@@ -80,6 +101,76 @@ namespace TelephoneCallRecording.Services.Calls
                 ToTransportTimeOfDay(activeCall.TimeOfDay));
         }
 
+        public async Task<IReadOnlyList<CallHistoryItem>> GetCallHistoryAsync(int userId, DateTime fromUtc, DateTime toUtc, CancellationToken cancellationToken = default)
+        {
+            var subscriberId = await GetSubscriberIdAsync(userId, cancellationToken);
+            if (subscriberId == null)
+            {
+                return [];
+            }
+
+            var fromUnix = new DateTimeOffset(fromUtc).ToUnixTimeSeconds();
+            var toUnix = new DateTimeOffset(toUtc).ToUnixTimeSeconds();
+
+            var history = await _db.Calls
+                .AsNoTracking()
+                .Where(x => x.SubscriberId == subscriberId.Value)
+                .Where(x => x.DurationMinutes.HasValue)
+                .Where(x => x.StartUnixTime >= fromUnix && x.StartUnixTime < toUnix)
+                .OrderByDescending(x => x.StartUnixTime)
+                .Select(x => new
+                {
+                    x.Id,
+                    x.DestPhone,
+                    CityName = x.City!.Name,
+                    x.StartUnixTime,
+                    DurationMinutes = x.DurationMinutes!.Value,
+                    x.TimeOfDay,
+                    AppliedTariff = x.TimeOfDay == CallTimeOfDay.Day ? x.City!.DayTariff : x.City!.NightTariff,
+                    DiscountPercent = _db.CityDiscounts
+                        .Where(d => d.CityId == x.CityId &&
+                                    x.DurationMinutes.Value >= d.MinMinutes &&
+                                    (!d.MaxMinutes.HasValue || x.DurationMinutes.Value < d.MaxMinutes.Value))
+                        .OrderByDescending(d => d.MinMinutes)
+                        .Select(d => d.DiscountPercent)
+                        .FirstOrDefault()
+                })
+                .ToListAsync(cancellationToken);
+
+            return history
+                .Select(x =>
+                {
+                    var baseCost = Math.Round(x.DurationMinutes * x.AppliedTariff, 2);
+                    var finalCost = Math.Round(baseCost * (1m - x.DiscountPercent / 100m), 2);
+
+                    return new CallHistoryItem(
+                        x.Id,
+                        x.DestPhone,
+                        x.CityName,
+                        DateTimeOffset.FromUnixTimeSeconds(x.StartUnixTime),
+                        x.DurationMinutes,
+                        ToTransportTimeOfDay(x.TimeOfDay),
+                        Math.Round(x.AppliedTariff, 2),
+                        Math.Round(x.DiscountPercent, 2),
+                        baseCost,
+                        finalCost);
+                })
+                .ToList();
+        }
+
+        public async Task<CallSummaryView> GetCallSummaryAsync(int userId, DateTime fromUtc, DateTime toUtc, CancellationToken cancellationToken = default)
+        {
+            var history = await GetCallHistoryAsync(userId, fromUtc, toUtc, cancellationToken);
+
+            return new CallSummaryView(
+                fromUtc,
+                toUtc,
+                history.Count,
+                history.Sum(x => x.DurationMinutes),
+                Math.Round(history.Sum(x => x.BaseCost), 2),
+                Math.Round(history.Sum(x => x.FinalCost), 2));
+        }
+
         public async Task<CallStartResult> StartCallAsync(int userId, string destPhone, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrWhiteSpace(destPhone))
@@ -110,18 +201,18 @@ namespace TelephoneCallRecording.Services.Calls
 
                 var activeExists = await _db.Calls.AnyAsync(
                     x => x.SubscriberId == subscriber.Id &&
-                         x.DestPhone == destPhone &&
                          x.DurationMinutes == null,
                     cancellationToken);
 
                 if (activeExists)
                 {
                     await transaction.RollbackAsync(cancellationToken);
-                    return new CallStartResult(false, "active_call_exists", "У вас уже есть активный звонок на этот номер.");
+                    return new CallStartResult(false, "active_call_exists", "У вас уже есть активный звонок. Сначала завершите его.");
                 }
 
-                var startedAt = DateTimeOffset.UtcNow;
-                var timeOfDay = startedAt.Hour >= 8 && startedAt.Hour < 20
+                var startedAtUtc = DateTimeOffset.UtcNow;
+                var serverNow = DateTimeOffset.Now;
+                var timeOfDay = serverNow.Hour >= 8 && serverNow.Hour < 20
                     ? CallTimeOfDay.Day
                     : CallTimeOfDay.Night;
 
@@ -130,7 +221,7 @@ namespace TelephoneCallRecording.Services.Calls
                     SubscriberId = subscriber.Id,
                     CityId = destination.CityId,
                     DestPhone = destPhone,
-                    StartUnixTime = startedAt.ToUnixTimeSeconds(),
+                    StartUnixTime = startedAtUtc.ToUnixTimeSeconds(),
                     DurationMinutes = null,
                     TimeOfDay = timeOfDay
                 }, cancellationToken);
@@ -138,19 +229,25 @@ namespace TelephoneCallRecording.Services.Calls
                 await _db.SaveChangesAsync(cancellationToken);
                 await transaction.CommitAsync(cancellationToken);
 
+                _logger.LogInformation(
+                    "User {UserId} started a call to {DestPhone} at {StartedAtUtc}.",
+                    userId,
+                    destPhone,
+                    startedAtUtc);
+
                 return new CallStartResult(
                     true,
                     "call_started",
                     "Звонок успешно начат.",
                     destPhone,
-                    startedAt,
+                    startedAtUtc,
                     ToTransportTimeOfDay(timeOfDay));
             }
             catch (DbUpdateException ex)
             {
                 _logger.LogWarning(ex, "Call start conflict for user {UserId} and destination {DestPhone}.", userId, destPhone);
                 await transaction.RollbackAsync(cancellationToken);
-                return new CallStartResult(false, "active_call_exists", "У вас уже есть активный звонок на этот номер.");
+                return new CallStartResult(false, "active_call_exists", "У вас уже есть активный звонок. Сначала завершите его.");
             }
             catch (Exception ex)
             {
@@ -222,6 +319,13 @@ namespace TelephoneCallRecording.Services.Calls
 
                 await _db.SaveChangesAsync(cancellationToken);
                 await transaction.CommitAsync(cancellationToken);
+
+                _logger.LogInformation(
+                    "User {UserId} completed a call to {DestPhone}. Duration {DurationMinutes} minutes, total {Cost}.",
+                    userId,
+                    destPhone,
+                    durationMinutes,
+                    Math.Round(cost, 2));
 
                 return new CallEndResult(
                     true,

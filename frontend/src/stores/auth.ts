@@ -9,26 +9,44 @@ export const useAuthStore = defineStore('auth', () => {
 
   const isAuthenticated = computed(() => profile.value !== null)
 
+  let bootstrapPromise: Promise<void> | null = null
+  
   async function bootstrap() {
-    if (isBootstrapped.value || isBootstrapping.value) {
+    if (isBootstrapped.value) {
       return
     }
 
-    isBootstrapping.value = true
-    try {
-      await getCsrfToken()
-      try {
-        profile.value = await fetchProfile()
-      } catch (error) {
-        if (!(error instanceof ApiError) || error.status !== 401) {
-          throw error
-        }
-        profile.value = null
-      }
-      isBootstrapped.value = true
-    } finally {
-      isBootstrapping.value = false
+    if (bootstrapPromise) {
+      return bootstrapPromise // ← ждём уже запущенный bootstrap
     }
+
+    isBootstrapping.value = true
+
+    bootstrapPromise = (async () => {
+      try {
+        await getCsrfToken()
+
+        try {
+          const data = await fetchProfile()
+          profile.value = data
+        } catch (error) {
+          if (error instanceof ApiError && (error.status === 401 || error.status === 403)) {
+            profile.value = null
+          } else {
+            profile.value = null
+          }
+        }
+
+        isBootstrapped.value = true
+      } catch (error) {
+        profile.value = null
+      } finally {
+        isBootstrapping.value = false
+        bootstrapPromise = null
+      }
+    })()
+
+    return bootstrapPromise
   }
 
   async function signIn(payload: LoginPayload) {
@@ -57,7 +75,14 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function signOut() {
-    await logout()
+    try {
+      await logout()
+    } catch (error) {
+      if (!(error instanceof ApiError) || (error.status !== 401 && error.status !== 403)) {
+        throw error
+      }
+    }
+
     clearCsrfToken()
     await getCsrfToken()
     profile.value = null

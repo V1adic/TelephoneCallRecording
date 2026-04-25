@@ -38,6 +38,11 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/admin',
+      component: () => import('@/pages/AdminPage.vue'),
+      meta: { requiresAuth: true, adminOnly: true }
+    },
+    {
       path: '/:pathMatch(.*)*',
       component: NotFoundPage
     }

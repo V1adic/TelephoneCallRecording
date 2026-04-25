@@ -1,12 +1,22 @@
 <template>
   <AuthShell
-    title="Операционный вход"
-    lead="Вход для сотрудника или абонента открывает защищённый кабинет, где уже доступны запуск звонка, расчёт стоимости и текущий статус сессии."
+    title="Безопасный вход"
+    lead="Аутентификация проходит по защищённому маршруту: после входа пользователь попадает только в свой контур доступа, а административные функции выдаются строго по роли."
   >
-    <form class="stack" @submit.prevent="submit">
-      <div class="form-copy">
-        <h2>Войти в систему</h2>
-        <p>Используйте те же учётные данные, с которыми проходили регистрацию.</p>
+    <form class="space-y-6" @submit.prevent="submit">
+      <div class="space-y-3">
+        <span class="badge-shell text-xs uppercase tracking-[0.22em] text-cyan-100">
+          Session Access
+        </span>
+        <div>
+          <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-[2.2rem]">
+            Войти в систему
+          </h2>
+          <p class="mt-3 max-w-xl text-sm leading-6 text-slate-300">
+            Используйте те же учётные данные, с которыми проходили регистрацию. После входа система сразу загрузит профиль,
+            активный звонок и доступные разделы.
+          </p>
+        </div>
       </div>
 
       <MessageBanner
@@ -16,21 +26,41 @@
         tone="danger"
       />
 
-      <label class="field">
-        <span>Username</span>
-        <input v-model.trim="form.username" autocomplete="username" required maxlength="15" minlength="5" />
+      <label class="block space-y-2">
+        <span class="text-sm font-medium text-slate-300">Имя пользователя</span>
+        <input
+          v-model.trim="form.username"
+          class="input-shell"
+          autocomplete="username"
+          required
+          maxlength="15"
+          minlength="5"
+        />
       </label>
 
-      <label class="field">
-        <span>Password</span>
-        <input v-model="form.password" type="password" autocomplete="current-password" required minlength="12" maxlength="100" />
+      <label class="block space-y-2">
+        <span class="text-sm font-medium text-slate-300">Пароль</span>
+        <input
+          v-model="form.password"
+          class="input-shell"
+          type="password"
+          autocomplete="current-password"
+          required
+          minlength="12"
+          maxlength="100"
+        />
       </label>
 
-      <button class="primary-button" :disabled="isSubmitting">
-        {{ isSubmitting ? 'Выполняем вход...' : 'Войти' }}
+      <button class="btn-primary w-full" :disabled="isSubmitting">
+        {{ isSubmitting ? 'Проверяем учётные данные...' : 'Войти в рабочий контур' }}
       </button>
 
-      <RouterLink class="text-link" to="/register">Нет аккаунта? Зарегистрироваться</RouterLink>
+      <div class="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-300">
+        <span>Нет аккаунта?</span>
+        <RouterLink class="font-semibold text-cyan-200 transition hover:text-white" to="/register">
+          Зарегистрироваться
+        </RouterLink>
+      </div>
     </form>
   </AuthShell>
 </template>

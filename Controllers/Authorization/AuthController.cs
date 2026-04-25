@@ -23,13 +23,13 @@ namespace TelephoneCallRecording.Controllers.Authorization
         public record RegisterRequest(
             [Required, MaxLength(15), MinLength(5)] string Username,
             [Required, MinLength(12), MaxLength(100)] string Password,
-            [Required, MaxLength(100)] string Email,
-            [Required, MaxLength(20)] string PhoneNumber,
-            [Required, MaxLength(12)] string Inn,
+            [Required, EmailAddress, MaxLength(100)] string Email,
+            [Required, MaxLength(20), RegularExpression(@"^\+\d{11,15}$")] string PhoneNumber,
+            [Required, MaxLength(12), RegularExpression(@"^\d{12}$")] string Inn,
             [Required, MaxLength(250)] string Address,
-            [Required] int CityId);
+            [Required, Range(1, int.MaxValue)] int CityId);
         public record ConfirmEmailRequest([Required, MaxLength(20)] string Code);
-        public record ProfileResponse(string Username, string Email, bool IsEmailConfirmed, string? PhoneNumber, string? City);
+        public record ProfileResponse(string Username, string Email, string Role, bool IsEmailConfirmed, string? PhoneNumber, string? City);
 
         private readonly IAntiforgery _antiforgery;
         private readonly ILoginService _loginService;
@@ -37,6 +37,7 @@ namespace TelephoneCallRecording.Controllers.Authorization
         private readonly IEmailService _emailService;
         private readonly IUserRepository _userRepository;
         private readonly IVerificationCookieService _verificationCookieService;
+        private readonly ILogger<AuthController> _logger;
 
         public AuthController(
             IAntiforgery antiforgery,
@@ -44,7 +45,8 @@ namespace TelephoneCallRecording.Controllers.Authorization
             IRegisterService registerService,
             IEmailService emailService,
             IUserRepository userRepository,
-            IVerificationCookieService verificationCookieService)
+            IVerificationCookieService verificationCookieService,
+            ILogger<AuthController> logger)
         {
             _antiforgery = antiforgery;
             _loginService = loginService;
@@ -52,6 +54,7 @@ namespace TelephoneCallRecording.Controllers.Authorization
             _emailService = emailService;
             _userRepository = userRepository;
             _verificationCookieService = verificationCookieService;
+            _logger = logger;
         }
 
         [HttpGet("csrf")]
@@ -69,6 +72,12 @@ namespace TelephoneCallRecording.Controllers.Authorization
             var result = await _loginService.AttemptLogin(request.Username.Trim(), request.Password);
             if (!result.Success || result.Principal == null)
             {
+                _logger.LogWarning(
+                    "Login rejected for username {Username} from {RemoteIp}. Code: {Code}.",
+                    request.Username.Trim(),
+                    HttpContext.Connection.RemoteIpAddress,
+                    result.Code);
+
                 return result.Code == "locked"
                     ? StatusCode(StatusCodes.Status423Locked, new AuthMessageResponse(result.Code, result.Message))
                     : Unauthorized(new AuthMessageResponse(result.Code, result.Message));
@@ -87,6 +96,12 @@ namespace TelephoneCallRecording.Controllers.Authorization
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new AuthMessageResponse("profile_unavailable", "Не удалось загрузить профиль после входа."));
             }
+
+            _logger.LogInformation(
+                "User {UserId} ({Username}) signed in successfully from {RemoteIp}.",
+                user.Id,
+                user.Username,
+                HttpContext.Connection.RemoteIpAddress);
 
             return Ok(CreateProfileResponse(user));
         }
@@ -107,8 +122,19 @@ namespace TelephoneCallRecording.Controllers.Authorization
             if (result.Success && result.User != null)
             {
                 _verificationCookieService.Issue(HttpContext, result.User.Username);
+                _logger.LogInformation(
+                    "User {UserId} ({Username}) registered successfully from {RemoteIp}.",
+                    result.User.Id,
+                    result.User.Username,
+                    HttpContext.Connection.RemoteIpAddress);
                 return Ok(new AuthMessageResponse(result.Code, result.Message));
             }
+
+            _logger.LogWarning(
+                "Registration rejected for username {Username} from {RemoteIp}. Code: {Code}.",
+                request.Username.Trim(),
+                HttpContext.Connection.RemoteIpAddress,
+                result.Code);
 
             return result.Code switch
             {
@@ -128,6 +154,12 @@ namespace TelephoneCallRecording.Controllers.Authorization
             }
 
             var result = await _emailService.RequestConfirmationCodeAsync(username);
+            _logger.LogInformation(
+                "Confirmation code request for verification user {Username} from {RemoteIp}. Code: {Code}.",
+                username,
+                HttpContext.Connection.RemoteIpAddress,
+                result.Code);
+
             return result.Success
                 ? Ok(new AuthMessageResponse(result.Code, result.Message))
                 : result.Code == "locked"
@@ -144,13 +176,22 @@ namespace TelephoneCallRecording.Controllers.Authorization
                 return Unauthorized(new AuthMessageResponse("verification_missing", "Сессия подтверждения истекла."));
             }
 
-            var result = await _emailService.AttemptEmailConfirmationAsync(username, request.Code);
+            var result = await _emailService.AttemptEmailConfirmationAsync(username, request.Code.Trim());
             if (!result.Success)
             {
+                _logger.LogWarning(
+                    "Email confirmation rejected for {Username} from {RemoteIp}. Code: {Code}.",
+                    username,
+                    HttpContext.Connection.RemoteIpAddress,
+                    result.Code);
                 return BadRequest(new AuthMessageResponse(result.Code, result.Message));
             }
 
             _verificationCookieService.Clear(HttpContext);
+            _logger.LogInformation(
+                "Email confirmed for {Username} from {RemoteIp}.",
+                username,
+                HttpContext.Connection.RemoteIpAddress);
             return Ok(new AuthMessageResponse(result.Code, result.Message));
         }
 
@@ -177,12 +218,14 @@ namespace TelephoneCallRecording.Controllers.Authorization
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
-            if (!await ValidateCsrfAsync())
-            {
-                return BadRequest(new AuthMessageResponse("csrf_invalid", "Токен CSRF недействителен."));
-            }
-
+            var username = User.FindFirstValue(ClaimTypes.Name) ?? "unknown";
             await HttpContext.SignOutAsync("cookie");
+
+            _logger.LogInformation(
+                "User {Username} signed out from {RemoteIp}.",
+                username,
+                HttpContext.Connection.RemoteIpAddress);
+
             return Ok(new AuthMessageResponse("logged_out", "Вы вышли из системы."));
         }
 
@@ -192,24 +235,12 @@ namespace TelephoneCallRecording.Controllers.Authorization
             return int.TryParse(rawUserId, out var userId) ? userId : null;
         }
 
-        private async Task<bool> ValidateCsrfAsync()
-        {
-            try
-            {
-                await _antiforgery.ValidateRequestAsync(HttpContext);
-                return true;
-            }
-            catch (AntiforgeryValidationException)
-            {
-                return false;
-            }
-        }
-
         private static ProfileResponse CreateProfileResponse(Models.Authorization.User user)
         {
             return new ProfileResponse(
                 user.Username,
                 user.Email,
+                user.Role,
                 user.IsEmailConfirmed,
                 user.Subscriber?.PhoneNumber,
                 user.Subscriber?.City?.Name);

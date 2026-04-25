@@ -85,6 +85,12 @@ namespace TelephoneCallRecording.Services.DataBase.Authorization
                     .WithOne(x => x.User)
                     .HasForeignKey<User>(x => x.SubscriberId)
                     .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(x => x.Role)
+                    .HasColumnName("role")
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .HasDefaultValue("Client");
             });
 
             builder.Entity<City>(entity =>

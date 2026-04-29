@@ -50,6 +50,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function signIn(payload: LoginPayload) {
+    await getCsrfToken()
     const nextProfile = await login(payload)
     await getCsrfToken()
     profile.value = nextProfile
@@ -58,14 +59,17 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function signUp(payload: RegisterPayload) {
+    await getCsrfToken()
     return register(payload)
   }
 
   async function resendConfirmation() {
+    await getCsrfToken()
     return requestConfirmation()
   }
 
   async function completeConfirmation(code: string) {
+    await getCsrfToken()
     return confirmEmail(code)
   }
 

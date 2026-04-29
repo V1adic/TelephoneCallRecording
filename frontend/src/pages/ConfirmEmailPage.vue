@@ -1,18 +1,19 @@
 <template>
   <AuthShell
     title="Подтверждение email"
-    lead="Verification-cookie хранит короткую сессию подтверждения. Если код истёк, новый можно запросить здесь же, не теряя текущий защищённый сценарий."
+    lead="Введите код из письма, чтобы завершить регистрацию и перейти к работе в личном кабинете."
   >
     <form class="space-y-6" @submit.prevent="submit">
       <div class="space-y-3">
-        <span class="badge-shell text-xs uppercase tracking-[0.22em] text-cyan-100">
-          Email Verification
+        <span class="badge-shell text-xs">
+          <UiIcon name="mail" :size="15" />
+          Проверка email
         </span>
         <div>
-          <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-[2.2rem]">
+          <h2 class="text-3xl font-black tracking-tight text-slate-950 sm:text-[2.2rem]">
             Введите код
           </h2>
-          <p class="mt-3 text-sm leading-6 text-slate-300">
+          <p class="mt-3 text-sm leading-6 text-slate-600">
             Код действует 15 минут. После успешного подтверждения можно сразу возвращаться ко входу.
           </p>
         </div>
@@ -26,19 +27,22 @@
       />
 
       <label class="block space-y-2">
-        <span class="text-sm font-medium text-slate-300">Код подтверждения</span>
+        <span class="text-sm font-bold text-slate-700">Код подтверждения</span>
         <input v-model.trim="code" class="input-shell" required maxlength="20" />
       </label>
 
       <button class="btn-primary w-full" :disabled="isSubmitting">
+        <UiIcon name="check" :size="18" />
         {{ isSubmitting ? 'Проверяем...' : 'Подтвердить email' }}
       </button>
 
       <button class="btn-secondary w-full" type="button" :disabled="isSubmitting || isResending" @click="resend">
+        <UiIcon name="refresh" :size="18" />
         {{ isResending ? 'Отправляем новый код...' : 'Запросить новый код' }}
       </button>
 
-      <RouterLink class="inline-flex text-sm font-semibold text-cyan-200 transition hover:text-white" to="/login">
+      <RouterLink class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 transition hover:text-blue-900" to="/login">
+        <UiIcon name="arrowLeft" :size="16" />
         Вернуться ко входу
       </RouterLink>
     </form>
@@ -50,6 +54,7 @@ import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import AuthShell from '@/components/AuthShell.vue'
 import MessageBanner from '@/components/MessageBanner.vue'
+import UiIcon from '@/components/UiIcon.vue'
 import { ApiError } from '@/lib/api'
 import { useAuthStore } from '@/stores/auth'
 

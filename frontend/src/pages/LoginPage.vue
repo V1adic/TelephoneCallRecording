@@ -1,20 +1,20 @@
 <template>
   <AuthShell
-    title="Безопасный вход"
-    lead="Аутентификация проходит по защищённому маршруту: после входа пользователь попадает только в свой контур доступа, а административные функции выдаются строго по роли."
+    title="Войдите, чтобы продолжить работу"
+    lead="Личный кабинет показывает активные звонки, историю и начисления. Администраторы получают дополнительные инструменты для тарифов и отчётов."
   >
     <form class="space-y-6" @submit.prevent="submit">
       <div class="space-y-3">
-        <span class="badge-shell text-xs uppercase tracking-[0.22em] text-cyan-100">
-          Session Access
+        <span class="badge-shell text-xs">
+          <UiIcon name="lock" :size="15" />
+          Вход в аккаунт
         </span>
         <div>
-          <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-[2.2rem]">
+          <h2 class="text-3xl font-black tracking-tight text-slate-950 sm:text-[2.2rem]">
             Войти в систему
           </h2>
-          <p class="mt-3 max-w-xl text-sm leading-6 text-slate-300">
-            Используйте те же учётные данные, с которыми проходили регистрацию. После входа система сразу загрузит профиль,
-            активный звонок и доступные разделы.
+          <p class="mt-3 max-w-xl text-sm leading-6 text-slate-600">
+            Используйте имя пользователя и пароль. После входа откроется ваш рабочий кабинет.
           </p>
         </div>
       </div>
@@ -27,7 +27,7 @@
       />
 
       <label class="block space-y-2">
-        <span class="text-sm font-medium text-slate-300">Имя пользователя</span>
+        <span class="text-sm font-bold text-slate-700">Имя пользователя</span>
         <input
           v-model.trim="form.username"
           class="input-shell"
@@ -39,7 +39,7 @@
       </label>
 
       <label class="block space-y-2">
-        <span class="text-sm font-medium text-slate-300">Пароль</span>
+        <span class="text-sm font-bold text-slate-700">Пароль</span>
         <input
           v-model="form.password"
           class="input-shell"
@@ -52,12 +52,13 @@
       </label>
 
       <button class="btn-primary w-full" :disabled="isSubmitting">
-        {{ isSubmitting ? 'Проверяем учётные данные...' : 'Войти в рабочий контур' }}
+        <UiIcon name="logOut" :size="18" />
+        {{ isSubmitting ? 'Проверяем данные...' : 'Войти' }}
       </button>
 
-      <div class="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-300">
+      <div class="flex flex-col gap-3 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
         <span>Нет аккаунта?</span>
-        <RouterLink class="font-semibold text-cyan-200 transition hover:text-white" to="/register">
+        <RouterLink class="font-bold text-blue-700 transition hover:text-blue-900" to="/register">
           Зарегистрироваться
         </RouterLink>
       </div>
@@ -70,6 +71,7 @@ import { reactive, ref } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 import AuthShell from '@/components/AuthShell.vue'
 import MessageBanner from '@/components/MessageBanner.vue'
+import UiIcon from '@/components/UiIcon.vue'
 import { ApiError } from '@/lib/api'
 import { useAuthStore } from '@/stores/auth'
 

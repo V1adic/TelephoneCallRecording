@@ -14,7 +14,7 @@ app.use(router)
 const authStore = useAuthStore(pinia)
 
 router.beforeEach(async (to) => {
-  if (!authStore.isBootstrapped) {
+  if (!authStore.isBootstrapped && to.meta.requiresAuth) {
     await authStore.bootstrap()
   }
 
@@ -36,11 +36,13 @@ router.beforeEach(async (to) => {
   return true
 })
 
-authStore
-  .bootstrap()
-  .catch((error) => {
-    console.error('Failed to bootstrap application', error)
-  })
-  .finally(() => {
-    app.mount('#app')
-  })
+app.mount('#app')
+
+authStore.bootstrap().then(async () => {
+  const currentRoute = router.currentRoute.value
+  if (currentRoute.meta.guestOnly && authStore.isAuthenticated) {
+    await router.replace(authStore.profile?.role === 'Admin' ? '/admin' : '/dashboard')
+  }
+}).catch((error) => {
+  console.error('Failed to bootstrap application', error)
+})

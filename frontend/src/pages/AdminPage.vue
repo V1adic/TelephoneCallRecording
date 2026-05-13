@@ -351,7 +351,7 @@
           </label>
           <label class="block space-y-2">
             <span class="text-sm font-bold text-slate-700">Номер абонента для сводки</span>
-            <input v-model.trim="subscriberPhone" class="input-shell" placeholder="+48123456789" />
+            <input v-model.trim="subscriberPhone" class="input-shell" placeholder="+7123456789" />
           </label>
           <button class="btn-primary xl:mb-0.5" type="button" :disabled="reportsLoading" @click="loadReports">
             <UiIcon name="barChart" :size="18" />

@@ -44,7 +44,7 @@
 
         <label class="block space-y-2">
           <span class="text-sm font-bold text-slate-700">Телефон</span>
-          <input v-model.trim="form.phoneNumber" class="input-shell" placeholder="+48123456789" required maxlength="20" />
+          <input v-model.trim="form.phoneNumber" class="input-shell" placeholder="+7123456789" required maxlength="20" />
         </label>
 
         <label class="block space-y-2">

@@ -80,7 +80,7 @@
                 class="input-shell"
                 required
                 maxlength="20"
-                placeholder="+48123456789"
+                placeholder="+7123456789"
               />
             </label>
 
